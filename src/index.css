@@ -4,6 +4,13 @@ html {
   font-size: 62.5%;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 * {
   box-sizing: border-box;
 }
