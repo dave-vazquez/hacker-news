@@ -1,9 +1,9 @@
 .app {
+  width: 85%;
+
   margin: 0 auto;
 
   @media (max-width: 750px) {
     width: 100%;
   }
-
-  width: 85%;
 }
