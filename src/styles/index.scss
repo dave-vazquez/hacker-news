@@ -1,0 +1,16 @@
+@import "../../node_modules/normalize.css/normalize.css";
+@import "./mixins.scss";
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: black;
+  font-size: 1.3rem;
+  font-family: Verdana, Geneva, sans-serif;
+}

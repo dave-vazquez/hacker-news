@@ -1,12 +1,16 @@
-import "./app.scss";
+import "./styles/app.scss";
 
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Header } from "./components";
 
 const App = () => {
   return (
-    <div className="app">
-      <h1>Hacker News</h1>
-    </div>
+    <Router>
+      <div className="app">
+        <Header />
+      </div>
+    </Router>
   );
 };
 
