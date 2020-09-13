@@ -1,8 +1,8 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
-header {
-  padding: 6px 2px;
+header.main {
+  padding: 6px 2px 4px 2px;
   background: $orange;
 
   font-size: 1.2rem;

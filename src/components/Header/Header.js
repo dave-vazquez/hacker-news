@@ -6,7 +6,7 @@ import y18 from "../../assets/y18.gif";
 
 const Header = () => {
   return (
-    <header>
+    <header className="main">
       <nav>
         <Link to="/">
           <img id="y18-logo" src={y18} alt="y combinator" />
