@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+main {
+  padding: 16px 0;
+  background: $beige;
+
+  ol {
+    margin: 0;
+    padding-left: 0;
+    list-style-position: inside;
+
+    li {
+      font-size: 1.4rem;
+      white-space: nowrap;
+    }
+
+    li:nth-child(-n + 9) {
+      padding-left: 8px;
+    }
+  }
+}

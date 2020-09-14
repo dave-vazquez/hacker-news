@@ -1,0 +1,58 @@
+@import "../../styles/variables.scss";
+
+article {
+  display: inline-grid;
+
+  grid-template-rows: auto;
+  grid-template-columns: 20px auto;
+  grid-template-areas:
+    "upvote art-header"
+    "upvote info";
+
+  row-gap: 5px;
+
+  width: calc(100% - 20px);
+
+  img {
+    grid-area: upvote;
+    width: 12px;
+    padding-top: 2px;
+  }
+
+  header {
+    grid-area: art-header;
+
+    h1 {
+      display: inline;
+
+      margin: 0;
+      font-weight: normal;
+
+      line-height: 0;
+
+      white-space: pre-line;
+
+      a {
+        color: black;
+        font-size: 1.4rem;
+        text-decoration: none;
+      }
+
+      span {
+        color: $grey;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  p {
+    grid-area: info;
+    margin: 0;
+
+    white-space: pre-line;
+  }
+}
+
+article:nth-child(-n + 9) {
+  width: calc(100% - 28px);
+}
