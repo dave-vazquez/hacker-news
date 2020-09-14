@@ -3,10 +3,12 @@
 article {
   display: inline-grid;
 
-  width: calc(100% - 20px);
+  width: calc(100% - 15px);
+
+  margin-bottom: 8px;
 
   grid-template-rows: auto;
-  grid-template-columns: 20px auto;
+  grid-template-columns: 15px auto;
   grid-template-areas:
     "upvote header"
     "upvote details";
@@ -18,6 +20,11 @@ article {
 
     width: 12px;
     padding-top: 2px;
+
+    @media (min-width: 750px) {
+      width: 10px;
+      padding-top: 4px;
+    }
   }
 
   header {
@@ -50,11 +57,11 @@ article {
     margin: 0;
 
     color: $grey;
-    font-size: 1.2rem;
+    font-size: 1rem;
     white-space: pre-line;
 
     @media (min-width: 750px) {
-      font-size: 1rem;
+      font-size: 0.9rem;
     }
   }
 }
