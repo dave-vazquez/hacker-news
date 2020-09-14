@@ -2,7 +2,7 @@ import "./styles/app.scss";
 
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Header, StoryList } from "./components";
+import { Footer, Header, StoryList } from "./components";
 
 const App = () => {
   return (
@@ -10,6 +10,7 @@ const App = () => {
       <div className="app">
         <Header />
         <StoryList />
+        <Footer />
       </div>
     </Router>
   );
