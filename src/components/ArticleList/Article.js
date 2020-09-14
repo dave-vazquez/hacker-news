@@ -6,7 +6,7 @@ import upvote from "../../assets/upvote.png";
 const Article = () => {
   return (
     <article>
-      <img src={upvote} alt="upvote arrow" />
+      <img id="upvote" src={upvote} alt="upvote arrow" />
       <header>
         <h1>
           <a
@@ -15,7 +15,7 @@ const Article = () => {
             target="_blank"
           >
             Disrespectful Design - Users aren't stupid or lazy
-            <span> (https://somehowmanage.com)</span>
+            <span id="source-url"> (https://somehowmanage.com)</span>
           </a>
         </h1>
       </header>
