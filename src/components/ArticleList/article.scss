@@ -3,33 +3,32 @@
 article {
   display: inline-grid;
 
+  width: calc(100% - 20px);
+
   grid-template-rows: auto;
   grid-template-columns: 20px auto;
   grid-template-areas:
-    "upvote art-header"
-    "upvote info";
+    "upvote header"
+    "upvote details";
 
   row-gap: 5px;
 
-  width: calc(100% - 20px);
-
-  img {
+  img#upvote {
     grid-area: upvote;
+
     width: 12px;
     padding-top: 2px;
   }
 
   header {
-    grid-area: art-header;
+    grid-area: header;
 
     h1 {
       display: inline;
 
       margin: 0;
-      font-weight: normal;
-
       line-height: 0;
-
+      font-weight: normal;
       white-space: pre-line;
 
       a {
@@ -38,7 +37,7 @@ article {
         text-decoration: none;
       }
 
-      span {
+      span#source-url {
         color: $grey;
         font-size: 1rem;
       }
@@ -46,13 +45,21 @@ article {
   }
 
   p {
-    grid-area: info;
+    grid-area: details;
+
     margin: 0;
 
+    color: $grey;
+    font-size: 1.2rem;
     white-space: pre-line;
+
+    @media (min-width: 750px) {
+      font-size: 1rem;
+    }
   }
 }
 
+// creates indendation to align list-item numbers right
 article:nth-child(-n + 9) {
   width: calc(100% - 28px);
 }
