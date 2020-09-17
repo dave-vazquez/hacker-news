@@ -1,4 +1,5 @@
 import "./styles/index.scss";
+import "./wdyr.js";
 
 import React from "react";
 import ReactDOM from "react-dom";

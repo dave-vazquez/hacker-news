@@ -19,9 +19,9 @@ const Footer = () => {
         <Link to="/"> Apply to YC |</Link>
         <Link to="/"> Contact</Link>
       </nav>
-      <form onSubmit={() => false}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="search">Search:</label>
-        <input type="text" id="search" value="test" />
+        <input type="text" id="search" />
       </form>
     </footer>
   );
