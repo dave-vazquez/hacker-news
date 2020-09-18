@@ -12,9 +12,9 @@ const Header = () => {
           <img id="y18-logo" src={y18} alt="y combinator" />
         </Link>
         <div className="links">
-          <Link to="/" id="hacker-news"> Hacker News </Link>
+          <Link to="/stories/top" id="hacker-news"> Hacker News </Link>
           <Link to="/welcome"> welcome </Link>|
-          <NavLink to="/new" activeClassName="active"> new </NavLink>|
+          <NavLink to="/stories/new" activeClassName="active"> new </NavLink>|
           <NavLink to="/threads"> threads </NavLink>|
           <NavLink to="/past"> past </NavLink>|
           <NavLink to="/comments"> comments </NavLink>|

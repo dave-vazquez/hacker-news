@@ -1,7 +1,7 @@
 import "./story-list-item.scss";
 
 import React from "react";
-import { ReactComponent as ContentLoader } from "../../../assets/article-skeleton-loader.svg";
+import ContentLoader from "../../ContentLoader/ContentLoader";
 import useFetchStory from "../hooks/useFetchStory";
 import Story from "./Story";
 

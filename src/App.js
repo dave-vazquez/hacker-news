@@ -1,7 +1,7 @@
 import "./styles/app.scss";
 
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import { Footer, Header, StoryList } from "./components";
 
 const App = () => {
@@ -9,7 +9,7 @@ const App = () => {
     <Router>
       <div className="app">
         <Header />
-        <StoryList />
+        <Route path="/stories/:type" component={StoryList} />
         <Footer />
       </div>
     </Router>

@@ -7,11 +7,13 @@ const useFetchStoryIds = (storyType) => {
   const [error, setError] = useState(false);
   const [pages, setPages] = useState(initialPagesState);
 
+  console.log(storyType);
+
   useEffect(() => {
     setError(false);
 
     axios
-      .get(`/${storyType}.json`)
+      .get(`/${storyType}stories.json`)
       .then((res) => setPages(chunkify(res.data)))
       .catch(() => setError(true));
   }, [storyType]);
