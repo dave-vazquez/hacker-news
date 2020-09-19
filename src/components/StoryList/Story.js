@@ -1,8 +1,8 @@
 import "./story.scss";
 
 import React from "react";
-import upvote from "../../../assets/upvote.png";
-import formatElapsedTime from "../../../utils/formatElapsedTime";
+import upvote from "../../assets/upvote.png";
+import formatElapsedTime from "../../utils/formatElapsedTime";
 
 const Story = ({ story }) => {
   const timeElapsed = formatElapsedTime(story.time);

@@ -45,7 +45,6 @@ const useFetchStories = (storyType, pageNum) => {
 
   useEffect(() => {
     dispatch({ type: FETCHING });
-
     axios
       .get(`/${storyType}stories.json`)
       .then(({ data: storyIds }) => fetchStories(storyIds, pageNum))

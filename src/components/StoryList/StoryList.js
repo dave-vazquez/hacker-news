@@ -1,19 +1,17 @@
 import "./story-list.scss";
 
-import React, { useMemo } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import ContentLoader from "../ContentLoader/ContentLoader";
-import Story from "./components/Story";
+import Story from "./Story";
 import useFetchStories from "./hooks/useFetchStories";
 
 const StoryList = ({ match }) => {
   const { page: pageNum, type } = match.params;
 
-  const startIdx = useMemo(() => {
-    return +pageNum * 25 + 1;
-  }, [pageNum]);
-
   const [stories, fetching, error] = useFetchStories(type, pageNum);
+
+  const startIdx = resolveStartIndex(pageNum);
 
   if (error)
     return (
@@ -39,5 +37,9 @@ const StoryList = ({ match }) => {
     </main>
   );
 };
+
+function resolveStartIndex(pageNum) {
+  return +pageNum * 25 + 1;
+}
 
 export default StoryList;
