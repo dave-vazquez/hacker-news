@@ -24,7 +24,10 @@ const reducer = (state, action) => {
         error: false
       };
     default:
-      throw new Error();
+      return {
+        ...state,
+        error: true
+      };
   }
 };
 

@@ -1,16 +1,26 @@
 import "./story-list.scss";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
 import { Link } from "react-router-dom";
 import StoryListItem from "./components/StoryListItem";
 import useFetchStoryIds from "./hooks/useFetchStoryIds";
 
-const StoryList = ({ match, history }) => {
+const StoryList = ({ match }) => {
   const { page, type } = match.params;
 
-  const startIndex = useMemo(() => +page * 25 + 1, [page]);
+  const startIdx = useMemo(() => {
+    return +page * 25 + 1;
+  }, [page]);
 
-  const [pages, error] = useFetchStoryIds(type);
+  console.log("startIdx", startIdx);
+
+  const [storyIds, fetching, error] = useFetchStoryIds(
+    type,
+    startIdx
+  );
+
+  console.log("storyIds", storyIds);
+  console.log("****");
 
   if (error)
     return (
@@ -23,12 +33,12 @@ const StoryList = ({ match, history }) => {
 
   return (
     <main>
-      <ol start={startIndex}>
-        {pages[page].map((storyId, i) => (
+      <ol start={startIdx}>
+        {storyIds.map((storyId, i) => (
           <StoryListItem key={i} storyId={storyId} />
         ))}
       </ol>
-      <Link to={`/stories/${type}/${+page + 1}`}>More...</Link>
+      <Link to={`/stories/${type}/page/${+page + 1}`}>More...</Link>
     </main>
   );
 };

@@ -28,7 +28,7 @@ export default (timePostedUnix) => {
 function formatTimeElapsed(time, increment) {
   let flooredTime = String(Math.floor(time));
   let formattedIncrement =
-    flooredTime == 1 ? ` ${increment} ago` : ` ${increment}s ago`;
+    flooredTime === 1 ? ` ${increment} ago` : ` ${increment}s ago`;
 
   return flooredTime + formattedIncrement;
 }

@@ -1,36 +1,69 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "../../../utils/axios-instance";
 
-const initialPagesState = [Array(25).fill(false)];
+const RESULTS_PER_PAGE = 25;
+const FETCHING = "FETCHING";
+const ERROR = "ERROR";
+const SUCCESS = "SUCCESS";
 
-const useFetchStoryIds = (storyType) => {
-  const [error, setError] = useState(false);
-  const [pages, setPages] = useState(initialPagesState);
+const initialState = {
+  storyIds: Array(RESULTS_PER_PAGE).fill(false),
+  fetching: false,
+  error: false
+};
 
-  console.log(storyType);
+const reducer = (state, action) => {
+  switch (action.type) {
+    case FETCHING:
+      return {
+        ...initialState,
+        fetching: true
+      };
+    case ERROR:
+      return {
+        ...state,
+        fetching: false,
+        error: true
+      };
+    case SUCCESS:
+      return {
+        storyIds: action.payload,
+        fetching: false,
+        error: false
+      };
+    default:
+      return {
+        ...state,
+        error: true
+      };
+  }
+};
+
+const useFetchStoryIds = (storyType, startIdx) => {
+  const [{ storyIds, fetching, error }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   useEffect(() => {
-    setError(false);
+    dispatch({ type: FETCHING });
 
     axios
       .get(`/${storyType}stories.json`)
-      .then((res) => setPages(chunkify(res.data)))
-      .catch(() => setError(true));
-  }, [storyType]);
+      .then((res) =>
+        dispatch({
+          type: SUCCESS,
+          payload: sliceArray(res.data, startIdx)
+        })
+      )
+      .catch(() => dispatch({ type: ERROR }));
+  }, [storyType, startIdx]);
 
-  return [pages, error];
+  return [storyIds, fetching, error];
 };
 
-function chunkify(array) {
-  let index = 0;
-  let chunkedArray = [];
-
-  while (index <= 200) {
-    chunkedArray.push(array.slice(index, index + 25));
-    index += 25;
-  }
-
-  return chunkedArray;
+function sliceArray(array, startIdx) {
+  return array.slice(startIdx, startIdx + RESULTS_PER_PAGE);
 }
 
 export default useFetchStoryIds;
