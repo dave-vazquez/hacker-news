@@ -4,32 +4,32 @@ import React from "react";
 import upvote from "../../../assets/upvote.png";
 import formatElapsedTime from "../../../utils/formatElapsedTime";
 
-const Story = (props) => {
-  const {
-    content: { url, title, score, user, time, numComments }
-  } = props;
-
-  const timeElapsed = formatElapsedTime(time);
+const Story = ({ story }) => {
+  const timeElapsed = formatElapsedTime(story.time);
 
   return (
-    <>
+    <article>
       <img id="upvote" src={upvote} alt="upvote arrow" />
       <header>
         <h1>
-          <a href={url} rel="noopener noreferrer" target="_blank">
-            {title}
+          <a
+            href={story.url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {story.title}
             <span id="source-url"> (https://somehowmanage.com)</span>
           </a>
         </h1>
       </header>
       <p id="details">
-        <span>{score} points </span>
-        <span>by {user} </span>
+        <span>{story.score} points </span>
+        <span>by {story.by} </span>
         <span>{timeElapsed} | </span>
         <span>hide | </span>
-        <span>{numComments} comments</span>
+        <span>{story.descendants} comments</span>
       </p>
-    </>
+    </article>
   );
 };
 

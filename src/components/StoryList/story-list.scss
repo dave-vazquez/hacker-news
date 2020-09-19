@@ -10,5 +10,10 @@ main {
     margin: 0;
     padding-left: 0;
     list-style-position: inside;
+
+    li {
+      font-size: 1.4rem;
+      white-space: nowrap;
+    }
   }
 }
