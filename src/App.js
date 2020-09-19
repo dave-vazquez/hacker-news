@@ -16,11 +16,11 @@ const App = () => {
         {/* Creates a default route on page load */}
         <Route
           exact
-          path="/(|stories)"
-          render={() => <Redirect to="/stories/top" />}
+          path="/(|stories)(|stories/top)"
+          render={() => <Redirect to="/stories/top/0" />}
         />
         {/* Default route */}
-        <Route path="/stories/:type/:page?" component={StoryList} />
+        <Route path="/stories/:type/:page" component={StoryList} />
         <Footer />
       </Router>
     </div>

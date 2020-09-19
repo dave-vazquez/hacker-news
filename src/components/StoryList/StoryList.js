@@ -5,13 +5,12 @@ import { Link } from "react-router-dom";
 import StoryListItem from "./components/StoryListItem";
 import useFetchStoryIds from "./hooks/useFetchStoryIds";
 
-const StoryList = ({ match }) => {
+const StoryList = ({ match, history }) => {
   const { page, type } = match.params;
 
-  const [pages, error] = useFetchStoryIds(type);
-  const [pageNum, setPageNum] = useState(page ? Number(page) : 0);
+  const startIndex = useMemo(() => +page * 25 + 1, [page]);
 
-  const startIndex = useMemo(() => pageNum * 25 + 1, [pageNum]);
+  const [pages, error] = useFetchStoryIds(type);
 
   if (error)
     return (
@@ -25,20 +24,11 @@ const StoryList = ({ match }) => {
   return (
     <main>
       <ol start={startIndex}>
-        {pages[pageNum].map((storyId, i) => (
-          <StoryListItem
-            key={i}
-            storyId={storyId}
-            startNum={pageNum}
-          />
+        {pages[page].map((storyId, i) => (
+          <StoryListItem key={i} storyId={storyId} />
         ))}
       </ol>
-      <Link
-        onClick={() => setPageNum((pageNum) => pageNum + 1)}
-        to={`/stories/${type}/${pageNum + 1}`}
-      >
-        More...
-      </Link>
+      <Link to={`/stories/${type}/${+page + 1}`}>More...</Link>
     </main>
   );
 };
