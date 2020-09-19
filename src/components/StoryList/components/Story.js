@@ -22,7 +22,7 @@ const Story = (props) => {
           </a>
         </h1>
       </header>
-      <p>
+      <p id="details">
         <span>{score} points </span>
         <span>by {user} </span>
         <span>{timeElapsed} | </span>

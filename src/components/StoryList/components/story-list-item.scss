@@ -32,12 +32,12 @@ li {
     }
   }
 
-  // creates indendation to align list-item numbers right
-  article:nth-child(-n + 9) {
-    width: calc(100% - 28px);
-  }
+  // // creates indendation to align list-item numbers right
+  // article:nth-child(-n + 9) {
+  //   width: calc(100% - 28px);
+  // }
 }
-// creates indendation to align list-item numbers right
-li:nth-child(-n + 9) {
-  padding-left: 8px;
-}
+// // creates indendation to align list-item numbers right
+// li:nth-child(-n + 9) {
+//   padding-left: 8px;
+// }

@@ -1,18 +1,29 @@
 import "./styles/app.scss";
 
 import React from "react";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import {
+  Redirect,
+  Route,
+  BrowserRouter as Router
+} from "react-router-dom";
 import { Footer, Header, StoryList } from "./components";
 
 const App = () => {
   return (
-    <Router>
-      <div className="app">
+    <div className="app">
+      <Router>
         <Header />
-        <Route path="/stories/:type" component={StoryList} />
+        {/* Creates a default route on page load */}
+        <Route
+          exact
+          path="/(|stories)"
+          render={() => <Redirect to="/stories/top" />}
+        />
+        {/* Default route */}
+        <Route path="/stories/:type/:page?" component={StoryList} />
         <Footer />
-      </div>
-    </Router>
+      </Router>
+    </div>
   );
 };
 

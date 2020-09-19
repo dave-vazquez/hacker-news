@@ -1,18 +1,17 @@
 import "./story-list.scss";
 
-import React from "react";
-import { useRouteMatch } from "react-router-dom";
+import React, { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import StoryListItem from "./components/StoryListItem";
 import useFetchStoryIds from "./hooks/useFetchStoryIds";
 
-const StoryList = () => {
-  const match = useRouteMatch({
-    path: "/stories/:type",
-    strict: true,
-    sensitive: true
-  });
+const StoryList = ({ match }) => {
+  const { page, type } = match.params;
 
-  const [pages, error] = useFetchStoryIds(match.params.type);
+  const [pages, error] = useFetchStoryIds(type);
+  const [pageNum, setPageNum] = useState(page ? Number(page) : 0);
+
+  const startIndex = useMemo(() => pageNum * 25 + 1, [pageNum]);
 
   if (error)
     return (
@@ -25,11 +24,21 @@ const StoryList = () => {
 
   return (
     <main>
-      <ol>
-        {pages[0].map((storyId, i) => (
-          <StoryListItem key={i} storyId={storyId} />
+      <ol start={startIndex}>
+        {pages[pageNum].map((storyId, i) => (
+          <StoryListItem
+            key={i}
+            storyId={storyId}
+            startNum={pageNum}
+          />
         ))}
       </ol>
+      <Link
+        onClick={() => setPageNum((pageNum) => pageNum + 1)}
+        to={`/stories/${type}/${pageNum + 1}`}
+      >
+        More...
+      </Link>
     </main>
   );
 };
