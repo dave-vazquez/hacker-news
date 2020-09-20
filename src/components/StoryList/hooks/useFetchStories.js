@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useLayoutEffect, useReducer } from "react";
 import axios from "../../../utils/axios-instance";
 
 const RESULTS_PER_PAGE = 30;
@@ -43,7 +43,7 @@ const useFetchStories = (storyType, pageNum) => {
     initialState
   );
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     dispatch({ type: FETCHING });
     axios
       .get(`/${storyType}stories.json`)

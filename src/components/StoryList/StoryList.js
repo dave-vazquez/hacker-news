@@ -39,7 +39,7 @@ const StoryList = ({ match }) => {
 };
 
 function resolveStartIndex(pageNum) {
-  return +pageNum * 25 + 1;
+  return +pageNum * 30 + 1;
 }
 
 export default StoryList;
