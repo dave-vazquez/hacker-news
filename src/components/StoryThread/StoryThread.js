@@ -21,15 +21,15 @@ const StoryThread = ({ match }) => {
     );
 
   return (
-    <main>
+    <main aria-label="story comments">
       {fetching ? (
         <ContentLoader type="story" />
       ) : (
         <Story story={story} />
       )}
       <hr />
-      <section aria-label="comments" id="replies">
-        <ol>
+      <section aria-label="comment thread" id="replies">
+        <ul>
           {directReplies.map((reply, i) => (
             <li key={i}>
               {fetching ? (
@@ -39,7 +39,7 @@ const StoryThread = ({ match }) => {
               )}
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
     </main>
   );

@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-article#comment {
+section#comment {
   display: grid;
 
   width: calc(100% - 17px);
@@ -25,6 +25,10 @@ article#comment {
   header {
     color: $grey;
     font-size: 1.1rem;
+
+    p {
+      display: inline;
+    }
   }
 
   img#upvote {

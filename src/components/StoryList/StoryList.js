@@ -1,18 +1,16 @@
 import "./styles/story-list.scss";
 
-import React from "react";
+import React, { useState } from "react";
 import ContentLoader from "../ContentLoader/ContentLoader";
 import Pagination from "./Pagination";
 import Story from "./Story";
 import useFetchStories from "./hooks/useFetchStories";
+import useFetchStoryIds from "./hooks/useFetchStoryIds";
 
 const StoryList = ({ match }) => {
   const { page: pageNum, type: storyType } = match.params;
 
-  const [stories, fetching, error] = useFetchStories(
-    storyType,
-    pageNum
-  );
+  const [storyIds, error] = useFetchStoryIds(storyType, pageNum);
 
   const startIdx = resolveStartIndex(pageNum);
 
@@ -26,15 +24,11 @@ const StoryList = ({ match }) => {
     );
 
   return (
-    <main aria-label="story list">
+    <main>
       <ol start={startIdx}>
-        {stories.map((story, i) => (
+        {storyIds.map((storyId, i) => (
           <li key={i}>
-            {fetching ? (
-              <ContentLoader type="story" />
-            ) : (
-              <Story story={story} />
-            )}
+            <Story storyId={storyId} />
           </li>
         ))}
       </ol>

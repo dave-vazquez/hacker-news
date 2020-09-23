@@ -21,6 +21,7 @@ const App = () => {
           render={() => <Redirect to="/stories/top/page/0" />}
         />
         <Route
+          exact
           path="/stories/:type/page/:page"
           component={StoryList}
         />

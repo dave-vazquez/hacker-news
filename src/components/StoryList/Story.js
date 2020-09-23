@@ -4,8 +4,15 @@ import React from "react";
 import { Link } from "react-router-dom";
 import upvote from "../../assets/upvote.png";
 import formatElapsedTime from "../../utils/formatElapsedTime";
+import ContentLoader from "../ContentLoader/ContentLoader";
+import useFetchStory from "./hooks/useFetchStory";
 
-const Story = ({ story }) => {
+const Story = ({ storyId }) => {
+  const [story, fetching, error] = useFetchStory(storyId);
+
+  if (fetching) return <ContentLoader type="story" />;
+  if (error) return <p>Error Loading Story. Try again later.</p>;
+
   const timeElapsed = formatElapsedTime(story.time);
 
   return (
