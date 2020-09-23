@@ -7,17 +7,17 @@ const Footer = () => {
   return (
     <footer>
       <p>Applications are open for YC Winter 2021</p>
-      <nav>
-        <Link to="/">Guidelines |</Link>
-        <Link to="/"> FAQ |</Link>
-        <Link to="/"> Support |</Link>
-        <Link to="/"> API |</Link>
-        <Link to="/"> Security |</Link>
-        <Link to="/"> Lists |</Link>
-        <Link to="/"> Bookmarket |</Link>
-        <Link to="/"> Legal |</Link>
-        <Link to="/"> Apply to YC |</Link>
-        <Link to="/"> Contact</Link>
+      <nav aria-label="footer navigation">
+        <Link to="/guidelines">Guidelines |</Link>
+        <Link to="/faq"> FAQ |</Link>
+        <Link to="/support"> Support |</Link>
+        <Link to="/api"> API |</Link>
+        <Link to="/security"> Security |</Link>
+        <Link to="/lists"> Lists |</Link>
+        <Link to="/bookmarket"> Bookmarket |</Link>
+        <Link to="/legal"> Legal |</Link>
+        <Link to="/apply"> Apply to YC |</Link>
+        <Link to="/contact"> Contact</Link>
       </nav>
       <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="search">Search:</label>

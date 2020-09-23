@@ -9,10 +9,10 @@ const Header = () => {
     <header className="main">
       <nav>
         <Link to="/">
-          <img id="y18-logo" src={y18} alt="y combinator" />
+          <img id="y18-logo" src={y18} alt="hacker news logo" />
         </Link>
         <div className="links">
-          <Link to="/stories/top/page/0" id="hacker-news"> Hacker News </Link>
+          <h1><Link to="/stories/top/page/0" id="hacker-news"> Hacker News </Link></h1>
           <Link to="/welcome"> welcome </Link>|
           <NavLink to="/stories/new/page/0" activeClassName="active"> new </NavLink>|
           <NavLink to="/threads"> threads </NavLink>|

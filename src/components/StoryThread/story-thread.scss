@@ -1,0 +1,12 @@
+main {
+  width: 100%;
+
+  padding: 16px;
+
+  section#replies {
+    ol {
+      list-style-type: none;
+      padding-left: 0;
+    }
+  }
+}

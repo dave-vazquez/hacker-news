@@ -1,15 +1,18 @@
-import "./story-list.scss";
+import "./styles/story-list.scss";
 
 import React from "react";
-import { Link } from "react-router-dom";
 import ContentLoader from "../ContentLoader/ContentLoader";
+import Pagination from "./Pagination";
 import Story from "./Story";
 import useFetchStories from "./hooks/useFetchStories";
 
 const StoryList = ({ match }) => {
-  const { page: pageNum, type } = match.params;
+  const { page: pageNum, type: storyType } = match.params;
 
-  const [stories, fetching, error] = useFetchStories(type, pageNum);
+  const [stories, fetching, error] = useFetchStories(
+    storyType,
+    pageNum
+  );
 
   const startIdx = resolveStartIndex(pageNum);
 
@@ -23,17 +26,19 @@ const StoryList = ({ match }) => {
     );
 
   return (
-    <main>
+    <main aria-label="story list">
       <ol start={startIdx}>
         {stories.map((story, i) => (
           <li key={i}>
-            {fetching ? <ContentLoader /> : <Story story={story} />}
+            {fetching ? (
+              <ContentLoader type="story" />
+            ) : (
+              <Story story={story} />
+            )}
           </li>
         ))}
       </ol>
-      <Link to={`/stories/${type}/page/${+pageNum + 1}`}>
-        More...
-      </Link>
+      <Pagination storyType={storyType} pageNum={+pageNum} />
     </main>
   );
 };

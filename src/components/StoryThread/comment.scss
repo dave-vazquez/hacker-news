@@ -1,0 +1,69 @@
+@import "../../styles/variables.scss";
+
+article#comment {
+  display: grid;
+
+  width: calc(100% - 17px);
+
+  grid-template-rows: auto;
+  grid-template-columns: 17px auto;
+
+  grid-template-areas:
+    "upvote header"
+    "upvote div"
+    "upvote ul";
+
+  ol {
+    list-style-type: none;
+    li {
+      @media (min-width: 750px) {
+        margin-left: 30px;
+      }
+    }
+  }
+
+  header {
+    color: $grey;
+    font-size: 1.1rem;
+  }
+
+  img#upvote {
+    grid-area: upvote;
+    margin-top: 2px;
+
+    width: 12px;
+    margin-top: 1px;
+
+    @media (min-width: 750px) {
+      width: 10px;
+      margin-top: 2px;
+    }
+  }
+
+  div#comment-body {
+    width: 100%;
+    max-width: 350px;
+
+    padding: 10px 0 20px 0;
+
+    overflow-x: auto;
+
+    white-space: break-spaces;
+
+    a {
+      white-space: pre-wrap;
+    }
+
+    @media (min-width: 750px) {
+      max-width: 100%;
+
+      font-size: 1.2rem;
+    }
+  }
+
+  // ul {
+  //   li {
+  //     padding: 10px 0;
+  //   }
+  // }
+}

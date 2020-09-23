@@ -1,6 +1,6 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
-article {
+article#story {
   display: inline-grid;
 
   width: calc(100% - 15px);
@@ -30,7 +30,7 @@ article {
   header {
     grid-area: header;
 
-    h1 {
+    h2 {
       display: inline;
 
       margin: 0;
@@ -56,9 +56,19 @@ article {
 
     margin: 0;
 
+    white-space: pre-line;
+
     color: $grey;
     font-size: 1rem;
-    white-space: pre-line;
+
+    a {
+      color: $grey;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
 
     @media (min-width: 750px) {
       font-size: 0.9rem;

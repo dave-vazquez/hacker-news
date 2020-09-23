@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "@welldone-software/why-did-you-render": "^5.0.0-alpha.2",
     "axios": "^0.20.0",
+    "html-react-parser": "^0.14.0",
     "normalize.css": "^8.0.1",
     "qs": "^6.9.4",
     "react": "^16.13.1",

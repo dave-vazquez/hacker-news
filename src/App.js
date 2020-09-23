@@ -6,7 +6,8 @@ import {
   Footer,
   Header,
   PageNotFound,
-  StoryList
+  StoryList,
+  StoryThread
 } from "./components";
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           path="/stories/:type/page/:page"
           component={StoryList}
         />
+        <Route path="/story/:id" component={StoryThread} />
         <Route component={PageNotFound} />
       </Switch>
       <Footer />

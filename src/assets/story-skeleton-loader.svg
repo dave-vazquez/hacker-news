@@ -1,8 +1,9 @@
 <svg role="img" width="500" height="34" aria-labelledby="loading-aria" viewBox="0 0 500 34" preserveAspectRatio="none">
   <title id="loading-aria">Loading...</title>
-  <rect x="0" y="0" width="100%" height="100%" clip-path="url(#clip-path)" style='fill: url("#fill");'></rect>
+  <rect x="0" y="0" width="100%" height="100%" clip-path="url(#clip-path-story)" style='fill: url("#fill-story");'>
+  </rect>
   <defs>
-    <clipPath id="clip-path">
+    <clipPath id="clip-path-story">
       <rect x="0" y="0" rx="3" ry="3" width="500" height="16" />
       <rect x="0" y="23" rx="3" ry="3" width="175" height="6" />
       <rect x="185" y="23" rx="3" ry="3" width="50" height="6" />
@@ -10,7 +11,7 @@
       <rect x="180" y="20" rx="0" ry="0" width="1" height="12" />
       <rect x="240" y="20" rx="0" ry="0" width="1" height="12" />
     </clipPath>
-    <linearGradient id="fill">
+    <linearGradient id="fill-story">
       <stop offset="0.599964" stop-color="#cccccc" stop-opacity="1">
         <animate attributeName="offset" values="-2; -2; 1" keyTimes="0; 0.25; 1" dur="2s" repeatCount="indefinite">
         </animate>
