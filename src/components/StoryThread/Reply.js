@@ -29,8 +29,11 @@ const Reply = ({ reply }) => {
           [-]
         </span>
       </header>
-      <div className={`${hidden ? "hidden" : ""}`}>
-        <div id="comment-body">{parse(`${reply.text}`)}</div>
+      <div
+        id="reply-container"
+        className={`${hidden ? " hidden" : ""}`}
+      >
+        <div id="reply-body">{parse(`${reply.text}`)}</div>
         <ol id="direct-replies">
           {fetching ? (
             <ContentLoader type="reply" />

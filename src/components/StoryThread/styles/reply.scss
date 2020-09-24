@@ -3,8 +3,6 @@
 section#reply {
   display: grid;
 
-  width: calc(100% - 17px);
-
   grid-template-rows: auto;
   grid-template-columns: 17px auto;
 
@@ -58,24 +56,30 @@ section#reply {
     display: none;
   }
 
-  div#comment-body {
-    width: 100%;
-    max-width: 350px;
-
-    padding: 10px 0 20px 0;
-
+  div#reply-container {
     overflow-x: auto;
 
-    white-space: break-spaces;
+    width: 100%;
 
-    a {
-      white-space: pre-wrap;
-    }
+    div#reply-body {
+      width: 100%;
+      max-width: 350px;
 
-    @media (min-width: 750px) {
-      max-width: 100%;
+      padding: 10px 0 20px 0;
 
-      font-size: 1.2rem;
+      overflow-x: auto;
+
+      white-space: break-spaces;
+
+      a {
+        white-space: pre-wrap;
+      }
+
+      @media (min-width: 750px) {
+        max-width: 100%;
+
+        font-size: 1.2rem;
+      }
     }
   }
 }

@@ -46,7 +46,6 @@ const useFetchThread = (reply) => {
     if (reply) {
       if (reply.kids) {
         dispatch({ type: FETCHING });
-
         fetchDirectReplies(reply.kids)
           .then((directReplies) =>
             dispatch({ type: SUCCESS, directReplies })
