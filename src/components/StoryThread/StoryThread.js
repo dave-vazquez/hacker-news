@@ -28,7 +28,7 @@ const StoryThread = ({ match }) => {
         <Story story={story} />
       )}
       <hr />
-      <section aria-label="comments" id="replies">
+      <section id="replies">
         <ol>
           {directReplies.map((reply, i) => (
             <li key={i}>

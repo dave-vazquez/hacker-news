@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const Pagination = ({ storyType, pageNum }) => {
   return (
-    <nav aria-label="pagination navigation">
+    <nav>
       {pageNum > 0 && (
         <>
           <Link to={`/stories/${storyType}/page/${pageNum - 1}`}>

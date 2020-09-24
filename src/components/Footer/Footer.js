@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <p>Applications are open for YC Winter 2021</p>
-      <nav aria-label="footer navigation">
+      <nav>
         <Link to="/guidelines">Guidelines |</Link>
         <Link to="/faq"> FAQ |</Link>
         <Link to="/support"> Support |</Link>

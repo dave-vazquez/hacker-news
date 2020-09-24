@@ -24,11 +24,11 @@ const Story = ({ story }) => {
         </h2>
       </header>
       <p id="details">
-        <span aria-label="points">{story.score} points </span>
-        <span aria-label="author">by {story.by} </span>
+        <span>{story.score} points </span>
+        <span>by {story.by} </span>
         <time>{timeElapsed} | </time>
         <span>hide | </span>
-        <Link to={`/story/${story.id}`} aria-label="comment thread">
+        <Link to={`/story/${story.id}`}>
           {story.descendants} comments
         </Link>
       </p>
