@@ -6,6 +6,8 @@ main {
 
   border-bottom: 2px solid $orange;
 
+  min-height: calc(100vh - 22px);
+
   ol {
     margin: 0;
     padding-left: 0;

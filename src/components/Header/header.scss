@@ -1,7 +1,7 @@
 @import "../../styles/mixins.scss";
 @import "../../styles/variables.scss";
 
-header.main {
+header#main {
   padding: 6px 2px 4px 2px;
   background: $orange;
 
@@ -15,12 +15,21 @@ header.main {
   nav {
     @include flex(row, flex-start, center);
 
+    img#hacker-news-logo {
+      margin-right: 10px;
+      border: 1px solid white;
+    }
+
     h1 {
       display: block;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
+
+      margin: 0;
 
       @media (min-width: 750px) {
         display: inline;
+
+        font-size: 1.3rem;
       }
     }
 
@@ -33,17 +42,12 @@ header.main {
       color: white;
     }
 
-    img#y18-logo {
-      margin-right: 10px;
-      border: 1px solid white;
-    }
-
-    div.user {
+    div#user-logout {
       margin-left: auto;
       margin-right: 2px;
       text-align: right;
 
-      a#user-link {
+      a {
         white-space: nowrap;
       }
     }

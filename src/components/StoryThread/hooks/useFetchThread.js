@@ -36,25 +36,29 @@ const reducer = (state, action) => {
   }
 };
 
-const useFetchThread = (kids) => {
+const useFetchThread = (reply) => {
   const [{ directReplies, fetching, error }, dispatch] = useReducer(
     reducer,
     initialState
   );
 
   useLayoutEffect(() => {
-    if (kids) {
-      dispatch({ type: FETCHING });
+    if (reply) {
+      if (reply.kids) {
+        dispatch({ type: FETCHING });
 
-      fetchDirectReplies(kids)
-        .then((directReplies) =>
-          dispatch({ type: SUCCESS, directReplies })
-        )
-        .catch(() => dispatch({ type: ERROR }));
+        fetchDirectReplies(reply.kids)
+          .then((directReplies) =>
+            dispatch({ type: SUCCESS, directReplies })
+          )
+          .catch(() => dispatch({ type: ERROR }));
+      } else {
+        dispatch({ type: SUCCESS, directReplies: [] });
+      }
     } else {
-      dispatch({ type: SUCCESS, directReplies: [] });
+      dispatch({ type: ERROR });
     }
-  }, [kids]);
+  }, [reply]);
 
   return [directReplies, fetching, error];
 };

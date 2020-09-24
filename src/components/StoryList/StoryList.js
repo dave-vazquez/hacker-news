@@ -26,7 +26,7 @@ const StoryList = ({ match }) => {
     );
 
   return (
-    <main aria-label="story list">
+    <main>
       <ol start={startIdx}>
         {stories.map((story, i) => (
           <li key={i}>

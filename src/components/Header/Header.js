@@ -6,14 +6,13 @@ import y18 from "../../assets/y18.gif";
 
 const Header = () => {
   return (
-    <header className="main">
+    <header id="main">
       <nav>
         <Link to="/">
-          <img id="y18-logo" src={y18} alt="hacker news logo" />
+          <img id="hacker-news-logo" src={y18} alt="hacker news logo" />
         </Link>
-        <div className="links">
+        <div>
           <h1><Link to="/stories/top/page/0" id="hacker-news"> Hacker News </Link></h1>
-          <Link to="/welcome"> welcome </Link>|
           <NavLink to="/stories/new/page/0" activeClassName="active"> new </NavLink>|
           <NavLink to="/threads"> threads </NavLink>|
           <NavLink to="/past"> past </NavLink>|
@@ -23,8 +22,8 @@ const Header = () => {
           <NavLink to="/jobs"> jobs </NavLink>|
           <NavLink to="/submit"> submit </NavLink>
         </div>
-        <div className="user">
-          <Link to="/" id="user-link"> user_name (1) |</Link>
+        <div id="user-logout">
+          <Link to="/"> user_name (1) |</Link>
           <span> logout</span>
         </div>
       </nav>

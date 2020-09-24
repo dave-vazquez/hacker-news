@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../../styles/variables.scss";
 
 article#comment {
   display: grid;
@@ -10,8 +10,8 @@ article#comment {
 
   grid-template-areas:
     "upvote header"
-    "upvote div"
-    "upvote ul";
+    "thread div"
+    "thread ul";
 
   ol {
     list-style-type: none;
@@ -25,6 +25,10 @@ article#comment {
   header {
     color: $grey;
     font-size: 1.1rem;
+
+    span#toggle {
+      cursor: pointer;
+    }
   }
 
   img#upvote {
@@ -38,6 +42,20 @@ article#comment {
       width: 10px;
       margin-top: 2px;
     }
+  }
+
+  div#thread {
+    grid-area: thread;
+    margin-left: 4px;
+    border-left: 1px solid $grey;
+
+    padding: 5px 0;
+
+    cursor: pointer;
+  }
+
+  section.hidden {
+    display: none;
   }
 
   div#comment-body {

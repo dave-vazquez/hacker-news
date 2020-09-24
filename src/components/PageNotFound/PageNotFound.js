@@ -7,13 +7,13 @@ const PageNotFound = () => {
   useEffect(() => {
     setTimeout(() => {
       history.push("/stories/top/page/0");
-    }, 2000);
+    }, 3000);
   }, [history]);
 
   return (
     <main>
       <center>404 - Page not Found.</center>
-      <center>You will be redirected momentarily.</center>
+      <center>You will be redirected momentarily...</center>
     </main>
   );
 };

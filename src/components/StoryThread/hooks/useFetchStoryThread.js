@@ -7,7 +7,7 @@ const SUCCESS = "SUCCESS";
 
 const initialState = {
   story: {},
-  directReplies: Array(10).fill(null),
+  directReplies: Array(12).fill(null),
   fetching: true,
   error: false
 };

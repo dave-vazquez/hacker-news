@@ -1,4 +1,4 @@
-import "./story-thread.scss";
+import "./styles/story-thread.scss";
 
 import React from "react";
 import ContentLoader from "../ContentLoader/ContentLoader";
