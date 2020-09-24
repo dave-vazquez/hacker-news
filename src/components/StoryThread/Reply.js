@@ -18,7 +18,7 @@ const Reply = ({ reply }) => {
   const timeElapsed = formatElapsedTime(reply.time);
 
   return (
-    <article id="comment">
+    <section id="reply">
       <img id="upvote" src={upvote} alt="upvote arrow" />
       <div id="thread" onClick={toggleHidden} />
       <header>
@@ -29,14 +29,13 @@ const Reply = ({ reply }) => {
           [-]
         </span>
       </header>
-      <section className={`${hidden ? "hidden" : ""}`}>
+      <div className={`${hidden ? "hidden" : ""}`}>
         <div id="comment-body">{parse(`${reply.text}`)}</div>
-        <ol>
+        <ol id="direct-replies">
           {fetching ? (
             <ContentLoader type="reply" />
           ) : error ? null : (
             directReplies.map((reply, i) => {
-              console.log("reply", reply);
               return (
                 <li key={i}>
                   <Reply reply={reply} />
@@ -45,8 +44,8 @@ const Reply = ({ reply }) => {
             })
           )}
         </ol>
-      </section>
-    </article>
+      </div>
+    </section>
   );
 };
 

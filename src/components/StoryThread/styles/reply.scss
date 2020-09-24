@@ -1,6 +1,6 @@
 @import "../../../styles/variables.scss";
 
-article#comment {
+section#reply {
   display: grid;
 
   width: calc(100% - 17px);
@@ -13,7 +13,7 @@ article#comment {
     "thread div"
     "thread ul";
 
-  ol {
+  ol#direct-replies {
     list-style-type: none;
     li {
       @media (min-width: 750px) {
@@ -54,7 +54,7 @@ article#comment {
     cursor: pointer;
   }
 
-  section.hidden {
+  div.hidden {
     display: none;
   }
 
@@ -78,10 +78,4 @@ article#comment {
       font-size: 1.2rem;
     }
   }
-
-  // ul {
-  //   li {
-  //     padding: 10px 0;
-  //   }
-  // }
 }
