@@ -16,7 +16,6 @@ const DirectReplies = ({ replyIds }) => {
     <section id="direct-comments">
       <ul>
         {directReplies.map((reply, i) => {
-          console.log("directReplies", directReplies);
           return (
             <li key={i}>
               {fetching ? (
