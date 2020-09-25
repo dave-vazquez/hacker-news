@@ -16,6 +16,7 @@ const useFetchStories = (storyType, pageNum) => {
 
   useLayoutEffect(() => {
     dispatch({ type: FETCHING });
+
     axios
       .get(`/${storyType}stories.json`)
       .then(({ data: storyIds }) => {
