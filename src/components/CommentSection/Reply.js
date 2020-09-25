@@ -4,12 +4,10 @@ import parse from "html-react-parser";
 import React, { useState } from "react";
 import upvote from "../../assets/upvote.png";
 import formatElapsedTime from "../../utils/formatElapsedTime";
-import ContentLoader from "../ContentLoader/ContentLoader";
-import useFetchThread from "./hooks/useFetchThread";
+import DirectReplies from "./DirectReplies";
 
 const Reply = ({ reply }) => {
   const [hidden, setHidden] = useState(false);
-  const [directReplies, fetching, error] = useFetchThread(reply);
 
   if (!reply) return null;
 
@@ -34,19 +32,7 @@ const Reply = ({ reply }) => {
         className={`${hidden ? " hidden" : ""}`}
       >
         <div id="reply-body">{parse(`${reply.text}`)}</div>
-        <ol id="direct-replies">
-          {fetching ? (
-            <ContentLoader type="reply" />
-          ) : error ? null : (
-            directReplies.map((reply, i) => {
-              return (
-                <li key={i}>
-                  <Reply reply={reply} />
-                </li>
-              );
-            })
-          )}
-        </ol>
+        <DirectReplies replyIds={reply.kids} />
       </div>
     </section>
   );

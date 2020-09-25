@@ -1,45 +1,16 @@
 import { useLayoutEffect, useReducer } from "react";
 import axios from "../../../utils/axios-instance";
-
-const RESULTS_PER_PAGE = 30;
-const FETCHING = "FETCHING";
-const ERROR = "ERROR";
-const SUCCESS = "SUCCESS";
-
-const initialState = {
-  stories: Array(RESULTS_PER_PAGE).fill(null),
-  fetching: true,
-  error: false
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case FETCHING:
-      return initialState;
-    case ERROR:
-      return {
-        ...state,
-        fetching: false,
-        error: true
-      };
-    case SUCCESS: {
-      return {
-        stories: action.stories,
-        fetching: false,
-        error: false
-      };
-    }
-    default:
-      return {
-        ...state,
-        error: true
-      };
-  }
-};
+import storyReducer, {
+  ERROR,
+  FETCHING,
+  RESULTS_PER_PAGE,
+  SUCCESS,
+  initialState
+} from "./storyReducer";
 
 const useFetchStories = (storyType, pageNum) => {
   const [{ stories, fetching, error }, dispatch] = useReducer(
-    reducer,
+    storyReducer,
     initialState
   );
 
@@ -47,9 +18,15 @@ const useFetchStories = (storyType, pageNum) => {
     dispatch({ type: FETCHING });
     axios
       .get(`/${storyType}stories.json`)
-      .then(({ data: storyIds }) => fetchStories(storyIds, pageNum))
-      .then((stories) => dispatch({ type: SUCCESS, stories }))
-      .catch(() => dispatch({ type: ERROR }));
+      .then(({ data: storyIds }) => {
+        return fetchStories(storyIds, pageNum);
+      })
+      .then((storyData) => {
+        dispatch({ type: SUCCESS, storyData });
+      })
+      .catch(() => {
+        dispatch({ type: ERROR });
+      });
   }, [storyType, pageNum]);
 
   return [stories, fetching, error];
