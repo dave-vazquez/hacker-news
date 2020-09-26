@@ -7,7 +7,7 @@ import {
   Footer,
   Header,
   PageNotFound,
-  StoryList
+  StoryFeed
 } from "./components";
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
         />
         <Route
           path="/stories/:type/page/:page"
-          component={StoryList}
+          component={StoryFeed}
         />
         <Route path="/story/:id" component={CommentSection} />
         <Route component={PageNotFound} />

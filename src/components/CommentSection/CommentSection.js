@@ -2,7 +2,7 @@ import "./styles/comment-section.scss";
 
 import React from "react";
 import ContentLoader from "../ContentLoader/ContentLoader";
-import Story from "../StoryList/Story";
+import Story from "../StoryFeed/Story";
 import DirectReplies from "./DirectReplies";
 import useFetchStory from "./hooks/useFetchStory";
 

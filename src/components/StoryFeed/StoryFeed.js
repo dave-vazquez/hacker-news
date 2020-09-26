@@ -3,10 +3,10 @@ import "./styles/story-list.scss";
 import React from "react";
 import ContentLoader from "../ContentLoader/ContentLoader";
 import Pagination from "./Pagination";
-import Story from "./Story";
+import StoryListItem from "./Story";
 import useFetchStories from "./hooks/useFetchStories";
 
-const StoryList = ({ match }) => {
+const StoryFeed = ({ match }) => {
   const { page: pageNum, type: storyType } = match.params;
 
   const [stories, fetching, error] = useFetchStories(
@@ -33,7 +33,7 @@ const StoryList = ({ match }) => {
             {fetching ? (
               <ContentLoader type="story" />
             ) : (
-              <Story story={story} />
+              <StoryListItem story={story} />
             )}
           </li>
         ))}
@@ -47,4 +47,4 @@ function resolveStartIndex(pageNum) {
   return +pageNum * 30 + 1;
 }
 
-export default StoryList;
+export default StoryFeed;
