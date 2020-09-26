@@ -26,8 +26,8 @@ const StoryList = ({ match }) => {
     );
 
   return (
-    <main>
-      <ol start={startIdx}>
+    <main aria-label={`${storyType} stories`}>
+      <ol start={startIdx} aria-label={`of ${storyType} stories`}>
         {stories.map((story, i) => (
           <li key={i}>
             {fetching ? (

@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer>
       <p>Applications are open for YC Winter 2021</p>
-      <nav>
+      <nav aria-label="info">
         <Link to="/guidelines">Guidelines |</Link>
         <Link to="/faq"> FAQ |</Link>
         <Link to="/support"> Support |</Link>
@@ -19,9 +19,9 @@ const Footer = () => {
         <Link to="/apply"> Apply to YC |</Link>
         <Link to="/contact"> Contact</Link>
       </nav>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} role="search">
         <label htmlFor="search">Search:</label>
-        <input type="text" id="search" />
+        <input type="search" aria-label="search site" id="search" />
       </form>
     </footer>
   );

@@ -7,7 +7,7 @@ import y18 from "../../assets/y18.gif";
 const Header = () => {
   return (
     <header id="main">
-      <nav>
+      <nav aria-label="site-wide">
         <Link to="/">
           <img id="hacker-news-logo" src={y18} alt="hacker news logo" />
         </Link>
