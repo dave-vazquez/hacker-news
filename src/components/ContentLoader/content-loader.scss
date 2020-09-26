@@ -1,3 +1,11 @@
 div#svg-container {
-  width: 100%;
+  display: inline-block;
+  width: calc(100% - 30px);
+  max-width: 500px;
+
+  svg {
+    vertical-align: top;
+    width: 30%;
+    min-width: calc(100% - 30px);
+  }
 }

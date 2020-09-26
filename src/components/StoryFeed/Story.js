@@ -8,7 +8,7 @@ const Story = ({ story }) => {
   const timeElapsed = formatElapsedTime(story.time);
 
   return (
-    <section id="story">
+    <div id="story">
       <h2>
         <a href={story.url} rel="noopener noreferrer" target="_blank">
           {story.title}
@@ -24,7 +24,7 @@ const Story = ({ story }) => {
           {story.descendants} comments
         </Link>
       </p>
-    </section>
+    </div>
   );
 };
 

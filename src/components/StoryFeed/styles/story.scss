@@ -1,17 +1,19 @@
 @import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
 
-section#story {
+div#story {
   display: inline-flex;
   flex-direction: column;
 
-  h2 {
-    display: inline-block;
+  width: calc(100% - 30px);
 
+  h2 {
     margin: 0;
     margin-bottom: 10px;
-    line-height: 0;
+
     font-weight: normal;
-    white-space: pre-line;
+
+    line-height: 0.8;
 
     a {
       color: black;
@@ -26,11 +28,7 @@ section#story {
   }
 
   p#details {
-    grid-area: details;
-
     margin: 0;
-
-    white-space: pre-line;
 
     color: $grey;
     font-size: 1rem;
