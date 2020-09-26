@@ -5,7 +5,8 @@ div#story {
   display: inline-flex;
   flex-direction: column;
 
-  width: calc(100% - 30px);
+  // -50px compensates for list item numbers
+  width: calc(100% - 50px);
 
   h2 {
     margin: 0;

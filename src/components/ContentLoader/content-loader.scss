@@ -1,11 +1,13 @@
 div#svg-container {
   display: inline-block;
-  width: calc(100% - 30px);
+  // -50px compensates for list item numbers
+  width: calc(100% - 50px);
   max-width: 500px;
 
   svg {
     vertical-align: top;
     width: 30%;
-    min-width: calc(100% - 30px);
+    // -50px compensates for list item numbers
+    min-width: calc(100% - 50px);
   }
 }
