@@ -3,7 +3,7 @@ import "./styles/story-list.scss";
 import React from "react";
 import ContentLoader from "../ContentLoader/ContentLoader";
 import Pagination from "./Pagination";
-import StoryListItem from "./Story";
+import Story from "./Story";
 import useFetchStories from "./hooks/useFetchStories";
 
 const StoryFeed = ({ match }) => {
@@ -33,7 +33,7 @@ const StoryFeed = ({ match }) => {
             {fetching ? (
               <ContentLoader type="story" />
             ) : (
-              <StoryListItem story={story} />
+              <Story story={story} />
             )}
           </li>
         ))}
