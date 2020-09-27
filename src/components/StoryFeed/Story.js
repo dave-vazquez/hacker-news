@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import formatElapsedTime from "../../utils/formatElapsedTime";
 import parseHostName from "../../utils/parseHostName";
 
-const Post = ({ story, children }) => {
+const Story = ({ story, children }) => {
   const timeElapsed = formatElapsedTime(story.time);
   const sourceHost = parseHostName(story.url);
 
@@ -37,4 +37,4 @@ const Post = ({ story, children }) => {
   );
 };
 
-export default Post;
+export default Story;
