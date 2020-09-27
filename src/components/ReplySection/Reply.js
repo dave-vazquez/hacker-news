@@ -2,9 +2,9 @@ import "./styles/reply.scss";
 
 import parse from "html-react-parser";
 import React, { useState } from "react";
-import upvote from "../../assets/upvote.png";
+import { Link } from "react-router-dom";
 import formatElapsedTime from "../../utils/formatElapsedTime";
-import DirectReplies from "./DirectReplies";
+import DirectReplies from "./DirectReplyList";
 
 const Reply = ({ reply }) => {
   const [hidden, setHidden] = useState(false);
@@ -16,25 +16,21 @@ const Reply = ({ reply }) => {
   const timeElapsed = formatElapsedTime(reply.time);
 
   return (
-    <section id="reply">
-      <img id="upvote" src={upvote} alt="upvote arrow" />
-      <div id="thread" onClick={toggleHidden} />
+    <article id="comment">
       <header>
-        <span>{reply.by}</span>
+        <Link to={`/user/${reply.by}`}>{reply.by}</Link>
         <time>{timeElapsed}</time>
-        <span id="toggle" onClick={toggleHidden}>
-          {" "}
-          [-]
-        </span>
+        <button onClick={toggleHidden}>[-]</button>
       </header>
+      <button id="thread" onClick={toggleHidden} />
       <div
-        id="reply-container"
+        id="comment-body-container"
         className={`${hidden ? " hidden" : ""}`}
       >
-        <div id="reply-body">{parse(`${reply.text}`)}</div>
+        <div id="comment-body">{parse(`${reply.text}`)}</div>
         <DirectReplies replyIds={reply.kids} />
       </div>
-    </section>
+    </article>
   );
 };
 
