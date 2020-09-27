@@ -3,29 +3,38 @@ import "./styles/story.scss";
 import React from "react";
 import { Link } from "react-router-dom";
 import formatElapsedTime from "../../utils/formatElapsedTime";
+import parseHostName from "../../utils/parseHostName";
 
-const Story = ({ story }) => {
+const Post = ({ story, children }) => {
   const timeElapsed = formatElapsedTime(story.time);
+  const sourceHost = parseHostName(story.url);
 
   return (
     <section id="story">
       <h2>
         <a href={story.url} rel="noopener noreferrer" target="_blank">
           {story.title}
-          <span id="source-url"> (https://somehowmanage.com)</span>
+          <span id="source-host">
+            {sourceHost && ` (${sourceHost})`}
+          </span>
         </a>
       </h2>
-      <p id="details">
+      <p aria-label="story details" id="story-details">
         <span>{story.score} points </span>
-        <span>by {story.by} </span>
-        <time>{timeElapsed} | </time>
-        <span>hide | </span>
-        <Link to={`/story/${story.id}`}>
+        <Link to={`/user/${story.by}`}>by {story.by} </Link>
+        <time>{timeElapsed} </time> |{" "}
+        <Link
+          to={{
+            pathname: `/story/${story.id}`,
+            state: { story }
+          }}
+        >
           {story.descendants} comments
         </Link>
       </p>
+      {children}
     </section>
   );
 };
 
-export default Story;
+export default Post;

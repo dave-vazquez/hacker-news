@@ -1,4 +1,4 @@
-import "./styles/story-list.scss";
+import "./styles/story-feed.scss";
 
 import React from "react";
 import ContentLoader from "../ContentLoader/ContentLoader";
@@ -18,7 +18,7 @@ const StoryFeed = ({ match }) => {
 
   if (error)
     return (
-      <main>
+      <main aria-label={`${storyType} stories`}>
         <center>
           Error Loading Stories. Please try again later.
         </center>

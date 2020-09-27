@@ -3,11 +3,12 @@ import "./styles/app.scss";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import {
-  CommentSection,
   Footer,
   Header,
   PageNotFound,
-  StoryFeed
+  ReplySection,
+  StoryFeed,
+  UserProfile
 } from "./components";
 
 const App = () => {
@@ -24,7 +25,8 @@ const App = () => {
           path="/stories/:type/page/:page"
           component={StoryFeed}
         />
-        <Route path="/story/:id" component={CommentSection} />
+        <Route path="/story/:id" component={ReplySection} />
+        <Route path="/user/:username" component={UserProfile} />
         <Route component={PageNotFound} />
       </Switch>
       <Footer />
