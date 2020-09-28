@@ -1,7 +1,8 @@
 @import "../../../styles/variables.scss";
 
 main {
-  padding: 16px 0;
+  padding: 13px 0;
+  // padding: 16px 0;
   background: $beige;
 
   border-bottom: 2px solid $orange;
@@ -15,6 +16,7 @@ main {
 
     li {
       margin-bottom: 10px;
+      white-space: nowrap;
     }
   }
 }

@@ -8,14 +8,21 @@ article#comment {
   grid-template-columns: 17px auto;
 
   grid-template-areas:
-    "thread comment-details"
+    "upvote header"
     "thread comment"
     "thread ul";
 
-  header {
-    @include flex(row, flex-start, center);
+  img {
+    grid-area: upvote;
+    width: 13px;
 
-    grid-area: comment-details;
+    @media (min-width: 750px) {
+      width: 11px;
+    }
+  }
+
+  header {
+    @include flex(row, flex-start, flex-start);
 
     color: $grey;
     font-size: 1.1rem;
@@ -37,6 +44,8 @@ article#comment {
 
   button#thread {
     grid-area: thread;
+
+    height: calc(100% - 10px);
 
     margin-left: 4px;
 
@@ -68,11 +77,13 @@ article#comment {
 
     width: 100%;
 
+    // padding-left: 15px;
+
     div#comment-body {
       width: 100%;
       max-width: 350px;
 
-      padding: 10px 0 20px 0;
+      padding: 10px 0 10px 0;
 
       overflow-x: auto;
 

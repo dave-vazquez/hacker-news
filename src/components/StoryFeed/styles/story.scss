@@ -2,19 +2,37 @@
 @import "../../../styles/mixins.scss";
 
 section#story {
-  display: inline-flex;
-  flex-direction: column;
+  display: inline-grid;
 
-  // -50px compensates for list item numbers
-  width: calc(100% - 50px);
+  // -15px compensates for upvote arrow
+  width: calc(100% - 15px);
+
+  grid-template-rows: auto;
+  grid-template-columns: 15px auto;
+
+  grid-template-areas:
+    "upvote h2"
+    "upvote details";
+
+  row-gap: 5px;
+
+  img#upvote {
+    grid-area: upvote;
+
+    width: 13px;
+    margin-top: 6px;
+
+    @media (min-width: 750px) {
+      width: 11px;
+      margin-top: 8px;
+    }
+  }
 
   h2 {
     margin: 0;
-    margin-bottom: 10px;
 
     font-weight: normal;
-
-    line-height: 0.8;
+    white-space: pre-line;
 
     a {
       color: black;
@@ -28,11 +46,14 @@ section#story {
     }
   }
 
-  p#story-details {
+  p#details {
+    grid-area: details;
     margin: 0;
 
     color: $grey;
     font-size: 1.2rem;
+
+    white-space: pre-line;
 
     a {
       color: $grey;

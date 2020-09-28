@@ -9,12 +9,11 @@ const ReplySection = ({ location }) => {
 
   return (
     <main>
-      <Story story={story}>
-        <hr />
-        <section id="comments">
-          <DirectReplyList replyIds={story.kids} />
-        </section>
-      </Story>
+      <Story story={story} />
+      <hr />
+      <section id="comments">
+        <DirectReplyList replyIds={story.kids} />
+      </section>
     </main>
   );
 };

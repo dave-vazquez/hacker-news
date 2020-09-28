@@ -3,6 +3,7 @@ import "./styles/reply.scss";
 import parse from "html-react-parser";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import upvote from "../../assets/upvote.png";
 import formatElapsedTime from "../../utils/formatElapsedTime";
 import DirectReplies from "./DirectReplyList";
 
@@ -17,6 +18,7 @@ const Reply = ({ reply }) => {
 
   return (
     <article id="comment">
+      <img src={upvote} alt="upvote" />
       <header>
         <Link to={`/user/${reply.by}`}>{reply.by}</Link>
         <time>{timeElapsed}</time>

@@ -2,15 +2,17 @@ import "./styles/story.scss";
 
 import React from "react";
 import { Link } from "react-router-dom";
+import upvote from "../../assets/upvote.png";
 import formatElapsedTime from "../../utils/formatElapsedTime";
 import parseHostName from "../../utils/parseHostName";
 
-const Story = ({ story, children }) => {
+const Story = ({ story }) => {
   const timeElapsed = formatElapsedTime(story.time);
   const sourceHost = parseHostName(story.url);
 
   return (
     <section id="story">
+      <img id="upvote" src={upvote} alt="upvote" />
       <h2>
         <a href={story.url} rel="noopener noreferrer" target="_blank">
           {story.title}
@@ -19,7 +21,7 @@ const Story = ({ story, children }) => {
           </span>
         </a>
       </h2>
-      <p aria-label="story details" id="story-details">
+      <p aria-label="story details" id="details">
         <span>{story.score} points </span>
         <Link to={`/user/${story.by}`}>by {story.by} </Link>
         <time>{timeElapsed} </time> |{" "}
@@ -32,7 +34,6 @@ const Story = ({ story, children }) => {
           {story.descendants} comments
         </Link>
       </p>
-      {children}
     </section>
   );
 };
