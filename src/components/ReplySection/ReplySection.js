@@ -2,7 +2,7 @@ import "./styles/reply-section.scss";
 
 import React from "react";
 import Story from "../StoryFeed/Story";
-import DirectReplies from "./DirectReplyList";
+import DirectReplyList from "./DirectReplyList";
 
 const ReplySection = ({ location }) => {
   const { story } = location.state;
@@ -12,7 +12,7 @@ const ReplySection = ({ location }) => {
       <Story story={story}>
         <hr />
         <section id="comments">
-          <DirectReplies replyIds={story.kids} />
+          <DirectReplyList replyIds={story.kids} />
         </section>
       </Story>
     </main>
