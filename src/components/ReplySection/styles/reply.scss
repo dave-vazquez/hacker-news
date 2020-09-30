@@ -14,6 +14,7 @@ article#comment {
 
   img {
     grid-area: upvote;
+
     width: 13px;
 
     @media (min-width: 750px) {
@@ -23,6 +24,8 @@ article#comment {
 
   header {
     @include flex(row, flex-start, flex-start);
+
+    margin-bottom: 10px;
 
     color: $grey;
     font-size: 1.1rem;
@@ -34,6 +37,7 @@ article#comment {
 
     button {
       color: $grey;
+
       outline: none;
       border: transparent;
       background-color: transparent;
@@ -45,9 +49,11 @@ article#comment {
   button#thread {
     grid-area: thread;
 
-    height: calc(100% - 10px);
+    height: calc(100% - 8px);
+    min-height: 15px;
 
     margin-left: 4px;
+    margin-top: -8px;
 
     outline: none;
     border: transparent;
@@ -58,34 +64,28 @@ article#comment {
     cursor: pointer;
   }
 
-  ul#direct-replies {
-    list-style-type: none;
-    li {
-      @media (min-width: 750px) {
-        margin-left: 30px;
-      }
-    }
-  }
+  // ul#direct-replies {
+  //   list-style-type: none;
 
-  div.hidden {
-    display: none;
-  }
+  //   li {
+  //     @media (min-width: 750px) {
+  //       margin-left: 30px;
+  //     }
+  //   }
+  // }
 
   div#comment-body-container {
     grid-area: comment;
     overflow-x: auto;
 
-    width: 100%;
-
-    // padding-left: 15px;
-
     div#comment-body {
       width: 100%;
       max-width: 350px;
 
-      padding: 10px 0 10px 0;
+      margin-bottom: 13px;
 
       overflow-x: auto;
+      overflow-y: hidden;
 
       white-space: break-spaces;
 
@@ -97,6 +97,18 @@ article#comment {
         max-width: 100%;
 
         font-size: 1.2rem;
+      }
+    }
+  }
+
+  // styling for nested lists of direct replies
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+
+    li {
+      @media (min-width: 750px) {
+        margin-left: 15px;
       }
     }
   }

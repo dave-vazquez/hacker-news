@@ -5,12 +5,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import upvote from "../../assets/upvote.png";
 import formatElapsedTime from "../../utils/formatElapsedTime";
-import DirectReplies from "./DirectReplyList";
+import DirectReplyList from "./DirectReplyList";
 
 const Reply = ({ reply }) => {
   const [hidden, setHidden] = useState(false);
-
-  if (!reply) return null;
 
   const toggleHidden = () => setHidden((hidden) => !hidden);
 
@@ -30,8 +28,14 @@ const Reply = ({ reply }) => {
         className={`${hidden ? " hidden" : ""}`}
       >
         <div id="comment-body">{parse(`${reply.text}`)}</div>
-        <DirectReplies replyIds={reply.kids} />
       </div>
+      {reply.kids && (
+        <DirectReplyList
+          hidden={hidden}
+          replyIds={reply.kids}
+          thing={reply.kids.length === 4 ? true : false}
+        />
+      )}
     </article>
   );
 };

@@ -11,7 +11,7 @@ const ReplySection = ({ location }) => {
     <main>
       <Story story={story} />
       <hr />
-      <section id="comments">
+      <section id="reply-section">
         <DirectReplyList replyIds={story.kids} />
       </section>
     </main>

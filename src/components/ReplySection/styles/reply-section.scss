@@ -6,9 +6,11 @@ main {
     width: 100%;
   }
 
-  section#comments {
-    ul {
-      padding-left: 0;
+  section#reply-section {
+    width: 100%;
+
+    @media (min-width: 750px) {
+      max-width: 80%;
     }
   }
 }
