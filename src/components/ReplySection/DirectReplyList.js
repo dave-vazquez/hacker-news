@@ -5,7 +5,7 @@ import ContentLoader from "../ContentLoader/ContentLoader";
 import Reply from "./Reply";
 import useFetchDirectReplies from "./hooks/useFetchDirectReplies";
 
-const DirectReplyList = ({ replyIds, hidden, thing }) => {
+const DirectReplyList = ({ replyIds, hidden }) => {
   const [directReplies, fetching, error] = useFetchDirectReplies(
     replyIds
   );
