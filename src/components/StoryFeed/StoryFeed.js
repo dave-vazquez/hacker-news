@@ -18,16 +18,16 @@ const StoryFeed = ({ match }) => {
 
   if (error)
     return (
-      <main aria-label={`${storyType} stories`}>
-        <center>
+      <main>
+        <p id="feed-error">
           Error Loading Stories. Please try again later.
-        </center>
+        </p>
       </main>
     );
 
   return (
-    <main aria-label={`${storyType} stories`}>
-      <ol start={startIdx} aria-label={`of ${storyType} stories`}>
+    <main>
+      <ol start={startIdx}>
         {stories.map((story, i) => (
           <li key={i}>
             {fetching ? (
