@@ -34,16 +34,27 @@ const useFetchStories = (storyType, pageNum) => {
 };
 
 function fetchStories(storyIds, pageNum) {
+  storyIds = slicePage(pageNum, storyIds);
+
+  return Promise.all(
+    storyIds.map((storyId, i) => {
+      return axios
+        .get(`/item/${storyId}.json`)
+        .then(({ data }) => {
+          return data !== null ? data : { error: true };
+        })
+        .catch(() => {
+          return { error: true };
+        });
+    })
+  );
+}
+
+function slicePage(pageNum, storyIds) {
   let startIndex = pageNum * RESULTS_PER_PAGE;
   let endIndex = startIndex + RESULTS_PER_PAGE;
 
-  storyIds = storyIds.slice(startIndex, endIndex);
-
-  return Promise.all(
-    storyIds.map((storyId) =>
-      axios.get(`/item/${storyId}.json`).then(({ data }) => data)
-    )
-  );
+  return storyIds.slice(startIndex, endIndex);
 }
 
 export default useFetchStories;

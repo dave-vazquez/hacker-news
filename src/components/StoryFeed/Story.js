@@ -7,6 +7,14 @@ import formatElapsedTime from "../../utils/formatElapsedTime";
 import parseHostName from "../../utils/parseHostName";
 
 const Story = ({ story }) => {
+  //
+  if (story.error)
+    return (
+      <section id="story-error">
+        <p>Error Loading Story</p>
+      </section>
+    );
+
   const timeElapsed = formatElapsedTime(story.time);
   const sourceHost = parseHostName(story.url);
 

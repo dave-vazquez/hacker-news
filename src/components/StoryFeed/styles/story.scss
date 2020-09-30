@@ -1,6 +1,17 @@
 @import "../../../styles/variables.scss";
 @import "../../../styles/mixins.scss";
 
+section#story-error {
+  display: inline;
+
+  p {
+    display: inline;
+
+    color: red;
+    margin-left: 15px;
+  }
+}
+
 section#story {
   display: inline-grid;
 

@@ -14,33 +14,34 @@ const useFetchDirectReplies = (replyIds) => {
   );
 
   useEffect(() => {
-    if (replyIds) {
-      dispatch({
-        type: FETCHING,
-        directReplies: Array(replyIds.length).fill(null)
-      });
+    dispatch({
+      type: FETCHING,
+      directReplies: Array(replyIds.length).fill(null)
+    });
 
-      fetchDirectReplies(replyIds)
-        .then((directReplies) => {
-          dispatch({ type: SUCCESS, directReplies });
-        })
-        .catch(() => {
-          dispatch({ type: ERROR });
-        });
-    } else {
-      dispatch({ type: SUCCESS, directReplies: [] });
-    }
+    fetchDirectReplies(replyIds)
+      .then((directReplies) => {
+        dispatch({ type: SUCCESS, directReplies });
+      })
+      .catch(() => {
+        dispatch({ type: ERROR });
+      });
   }, [replyIds]);
 
   return [directReplies, fetching, error];
 };
 
-function fetchDirectReplies(replyIds) {
-  return Promise.all(
-    replyIds.map((replyId) =>
-      axios.get(`/item/${replyId}.json`).then(({ data }) => data)
-    )
+async function fetchDirectReplies(replyIds) {
+  const directReplies = await Promise.all(
+    replyIds.map((replyId) => {
+      return axios
+        .get(`/item/${replyId}.json`)
+        .then(({ data }) => (data.deleted ? null : data))
+        .catch(() => null);
+    })
   );
+
+  return directReplies.filter((reply) => reply !== null);
 }
 
 export default useFetchDirectReplies;

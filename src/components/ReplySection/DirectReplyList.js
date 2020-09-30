@@ -5,15 +5,15 @@ import ContentLoader from "../ContentLoader/ContentLoader";
 import Reply from "./Reply";
 import useFetchDirectReplies from "./hooks/useFetchDirectReplies";
 
-const DirectReplyList = ({ replyIds }) => {
+const DirectReplyList = ({ replyIds, hidden, thing }) => {
   const [directReplies, fetching, error] = useFetchDirectReplies(
     replyIds
   );
 
-  if (error) return null;
+  if (error) return <p id="error">Error Loading Replies</p>;
 
   return (
-    <ul>
+    <ul className={`${hidden ? " hidden" : ""}`}>
       {directReplies.map((reply, i) => {
         return (
           <li key={i}>
