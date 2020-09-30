@@ -33,18 +33,15 @@ const useFetchStories = (storyType, pageNum) => {
   return [stories, fetching, error];
 };
 
-async function fetchStories(storyIds, pageNum) {
+function fetchStories(storyIds, pageNum) {
   let startIndex = pageNum * RESULTS_PER_PAGE;
   let endIndex = startIndex + RESULTS_PER_PAGE;
 
   storyIds = storyIds.slice(startIndex, endIndex);
 
   return Promise.all(
-    storyIds.map(
-      async (storyId) =>
-        await axios
-          .get(`/item/${storyId}.json`)
-          .then(({ data }) => data)
+    storyIds.map((storyId) =>
+      axios.get(`/item/${storyId}.json`).then(({ data }) => data)
     )
   );
 }

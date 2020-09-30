@@ -37,11 +37,8 @@ const useFetchDirectReplies = (replyIds) => {
 
 function fetchDirectReplies(replyIds) {
   return Promise.all(
-    replyIds.map(
-      async (replyId) =>
-        await axios
-          .get(`/item/${replyId}.json`)
-          .then(({ data }) => data)
+    replyIds.map((replyId) =>
+      axios.get(`/item/${replyId}.json`).then(({ data }) => data)
     )
   );
 }
