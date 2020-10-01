@@ -37,9 +37,9 @@ function fetchStories(storyIds, pageNum) {
   storyIds = slicePage(pageNum, storyIds);
 
   return Promise.all(
-    storyIds.map((storyId, i) => {
+    storyIds.map((storyId) => {
       return axios
-        .get(`/item/${storyId}.json`)
+        .get(`item/${storyId}.json`)
         .then(({ data }) => {
           return data !== null ? data : { error: true };
         })

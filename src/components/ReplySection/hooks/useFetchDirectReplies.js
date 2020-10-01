@@ -5,7 +5,7 @@ import directRepliesReducer, {
   FETCHING,
   SUCCESS,
   initialState
-} from "./reducers/directRepliesReducer";
+} from "./directRepliesReducer";
 
 const useFetchDirectReplies = (replyIds) => {
   const [{ directReplies, fetching, error }, dispatch] = useReducer(
@@ -35,7 +35,7 @@ async function fetchDirectReplies(replyIds) {
   const directReplies = await Promise.all(
     replyIds.map((replyId) => {
       return axios
-        .get(`/item/${replyId}.json`)
+        .get(`item/${replyId}.json`)
         .then(({ data }) => (data.deleted ? null : data))
         .catch(() => null);
     })
