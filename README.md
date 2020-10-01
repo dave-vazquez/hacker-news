@@ -11,9 +11,9 @@ In October of 2014, [Hacker News](https://news.ycombinator.com/) released a publ
 > ...It's not the ideal public API, but it's the one we could release in the time we had. While awkward, it's possible to implement most of HN using it.
 > &mdash; <cite>[Hacker News API ReadMe](https://github.com/HackerNews/API).</cite>
 
-It's now October of 2020, and the HackerNews API, is still just as "awkward" to work with as it was in it's inception. For developers seeking to integrate this API into their projects, it presents a number of technical challenges for which I'll go into a bit more detail.
+It's now October of 2020, and the HackerNews API is still just as "awkward" to work with as it was in its inception. For developers seeking to integrate this API into their projects, it presents a number of technical challenges for which I'll go into a bit more detail.
 
-But, for those who don't mind a bit of a challenge, working with the Hacker News API to create a React-based clone provides an opportunity to flex some creative, front-end, problem-solving skills.
+But, for those who don't mind a bit of a challenge, working with the Hacker News API to create a React-based clone provides an opportunity to flex some creative front-end, problem-solving skills.
 
 ### An Awkward API
 
@@ -40,7 +40,7 @@ Here's the response we get:
 
 Not off to a good start.
 
-What we're looking at is an array of story ids. This means to ge the _actual_ data we need, we'll need to make 30 additional requests (30 per page) before we can render any content to the feed - and if you were hoping for some optional parameters for pagination or result limiting, there are none. It's 500 items or nothing at all.
+What we're looking at is an array of story ids. This means to get the _actual_ data we need, we'll need to make 30 additional requests (30 per page) before we can render any content to the feed - and if you were hoping for some optional parameters for pagination or a way to limit the number of results, there aren't any. It's 500 items or nothing at all.
 
 Let's make a fetch for to top story in the list above:
 
@@ -66,7 +66,7 @@ story
 ]
 ```
 
-It's a pretty straight-forward JSON object. I've left out some of the fields to save space, but notice the field `kids` (think "children"). If you were wondering how we might get the comments for each story to re-create the comment section, you have your answer: Another array of ids.
+It's a pretty straight-forward JSON object. I've left out some of the fields to save space, but notice the field `kids` (think "children"). If you were wondering how we might get the comments for each story, you have your answer: Another array of ids.
 
 ...
 
@@ -94,9 +94,9 @@ comment
 }
 ```
 
-Yet again, another array of `kids` representing the the direct replies to _this_ comment.
+Yet again, another array of `kids` representing the direct replies to _this_ comment.
 
-So, to yield all data required to render an entire comment tree would require a series of breadth-first, recursive requests on each and every comment in the tree, until the entire tree is exhausted.
+So, to yield all data required to render an entire comment tree would require a series of breadth-first, recursive requests on each and every comment in the tree until the entire tree is exhausted.
 
 We're talking about potentially **hundreds** of network requests depending on how active the comment section is.
 
@@ -123,7 +123,7 @@ To optimize the fetching of story data we have two options to consider:
 1. `Promise.all`:
 
    ```
-    function fetchStories(storyIds, pageNum) {
+    function fetchStories(storyIds) {
       return Promise.all(
         storyIds.map((storyId) => {
           return axios
@@ -145,7 +145,7 @@ To optimize the fetching of story data we have two options to consider:
 
    Since `storyIds.map` iterates synchronously over each story id, the result is a quick, burst of requests, all resolving at nearly the same time where otherwise the visitor would be waiting for one request to finish before the next could start. The resulting effect is a brief interval between fetching of data and the rendering of content to the page.
 
-   In the case where any one or more promises reject, `Promise.all` will itself reject leaving us with nothing to pass to `StoryFeed`. Since the Hacker News API doesn't actually return `400`'s or the like (always `200`'s with `null` as the data) we'll have to resort to a hacky approach where we pass an replacement object, `{error: true}` to the `Story` component so it can render an error message. We could also just return `null` but I prefer to make it explicit in the code that an error occurred.
+   In the case where any one or more promises reject, `Promise.all` will itself reject leaving us with nothing to pass to `StoryFeed`. Since the Hacker News API doesn't actually return `400` errors or the like (always `200`'s with `null` as the data) we'll have to resort to a hacky approach where we pass an replacement object, `{error: true}` to the `Story` component so it can render an error message. We could also just return `null` but I prefer to make it explicit in the code that an error occurred.
 
    ***
 
@@ -184,7 +184,7 @@ To optimize the fetching of story data we have two options to consider:
 
 For a mere 30 requests, either approach results in a fairly quick load-time.
 
-I'm personally fond of having each `Story` component responsible for fetching it's own data, but using this approach would have required I break the semantics of my HTML. It's a bit complicated to explain why - but in short, it just wasn't a compromise I was willing to make.
+I'm personally fond of having each `Story` component responsible for fetching its own data, but using this approach would have required I break the semantics of my HTML. It's a bit complicated to explain why - but in short, it just wasn't a compromise I was willing to make.
 
 ### **Comment Section**
 
@@ -210,7 +210,7 @@ ReplySection         - fetches story data --> comment ids
   └─── DirectReplies - fetches comment data for each comment id
 ```
 
-Lastly, a list of `Reply` components rendered by `DirectReplies`, will act as the presentional components, displaying the data for each comment to the reader.
+Lastly, a list of `Reply` components rendered by `DirectReplies`, will act as the presentational components, displaying the data for each comment to the reader.
 
 ```
 ReplySection         - fetches story data --> comment ids
@@ -293,7 +293,7 @@ Consider the case where a story has 100 direct replies and the reader has a slow
 
 One approach to solving this problem might be to batch a smaller fraction of requests, enough to fill say... the viewport height. And only batch more when the user scrolls down.
 
-A similar problem might occur in the other direction where a thread is so deeply nested that there's either not enough room to spare, or it simply takes forever for the tree to render that deep. In this case we might opt to drop a link after the tree reaches a certain depth where the reader can continue where they left off.
+A similar problem might occur in the other direction where a thread is so deeply nested that there's either not enough room to spare, or it simply takes forever for the tree to render that deep. In this case, we might opt to drop a link after the tree reaches a certain depth where the reader can continue where they left off.
 
 These are both interesting problems to solve, but we'll hold off on those for another day!
 
@@ -303,7 +303,7 @@ While the HackerNews API is probably not the best for making a clone of the site
 
 But, this is literally the situation developers find themselves in nearly every day of their life. Do you ever wonder why we have so many different competing frameworks/libraries, why one fad appears only to be quickly replaced by another?
 
-All of our tools are sub-optimal to some degree. But, that's why we get paid the big bucks work with them. The idea is never really to find the perfect solution for any given problem, but merely approach it as best as we can.
+All of our tools are sub-optimal to some degree. But, that's why we get paid the big bucks work with them. The idea is never really to find the perfect solution for any given problem but merely approach it as best as we can.
 
 So to that I say, when life gives you a terrible API, make some slightly less terrible lemonade!
 
