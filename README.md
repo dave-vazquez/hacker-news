@@ -277,6 +277,8 @@ And, thus what we achieve in the end is a breadth-first render of the entire com
 
 This provides the reader with something to read/interact with in the meantime. Sub-optimal, but much better than waiting for anywhere between a few and potentially hundreds (even thousands) of network requests to complete before you see anything. And, in the time it takes for all comments to render, the reader will likely have only had the chance to read a few. So the inconvenience is minimal.
 
+---
+
 You can view this component tree here:
 
 `ReplySection` - https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/ReplySection.js
