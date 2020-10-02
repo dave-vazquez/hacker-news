@@ -281,11 +281,13 @@ This provides the reader with something to read/interact with in the meantime. S
 
 You can view this component tree here:
 
-`ReplySection` - https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/ReplySection.js
+`ReplySection` - [src/components/ReplySection/ReplySection.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/ReplySection.js)
 
-`DirectReplies` - https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/DirectReplyList.js
+`DirectReplies` - [src/components/ReplySection/DirectReplyList.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/DirectReplyList.js)
 
-`Reply` - https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/Reply.js
+`useFetchDirectReplies` - [src/components/ReplySection/hooks/useFetchDirectReplies.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/hooks/useFetchDirectReplies.js)
+
+`Reply` - [src/components/ReplySection/Reply.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/Reply.js)
 
 ## Further Considerations
 
