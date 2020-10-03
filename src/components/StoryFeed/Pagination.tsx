@@ -3,7 +3,12 @@ import "./styles/pagination.scss";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Pagination = ({ storyType, pageNum }) => {
+type PropTypes = {
+  storyType: string;
+  pageNum: number;
+};
+
+const Pagination: React.FC<PropTypes> = ({ storyType, pageNum }) => {
   return (
     <nav aria-label="pagination">
       {pageNum > 0 && (

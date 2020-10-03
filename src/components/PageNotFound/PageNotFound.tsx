@@ -1,7 +1,9 @@
+import "./page-not-found.scss";
+
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-const PageNotFound = () => {
+const PageNotFound: React.FC = () => {
   const history = useHistory();
 
   useEffect(() => {
@@ -11,9 +13,9 @@ const PageNotFound = () => {
   }, [history]);
 
   return (
-    <main>
-      <center>404 - Page not Found.</center>
-      <center>You will be redirected momentarily...</center>
+    <main id="not-found">
+      <p>404 - Page not Found.</p>
+      <p>You will be redirected momentarily...</p>
     </main>
   );
 };

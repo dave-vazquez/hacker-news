@@ -5,7 +5,15 @@ import ContentLoader from "../ContentLoader/ContentLoader";
 import Reply from "./Reply";
 import useFetchDirectReplies from "./hooks/useFetchDirectReplies";
 
-const DirectReplyList = ({ replyIds, hidden }) => {
+type PropTypes = {
+  replyIds: Array<number>;
+  hidden: boolean;
+};
+
+const DirectReplyList: React.FC<PropTypes> = ({
+  replyIds,
+  hidden
+}) => {
   const [directReplies, fetching, error] = useFetchDirectReplies(
     replyIds
   );

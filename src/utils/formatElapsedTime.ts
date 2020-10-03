@@ -1,4 +1,4 @@
-export default (timePostedUnix) => {
+export default (timePostedUnix: number): string => {
   const now = new Date().getTime() / 1000;
   const then = new Date(timePostedUnix).getTime();
 
@@ -16,7 +16,7 @@ export default (timePostedUnix) => {
     return formatTimeElapsed(monthsElapsed, "month");
   // prettier-ignore
   if (daysElapsed >= 1) 
-    return formatTimeElapsed(daysElapsed, "day");
+    return formatTimeElapsed(daysElapsed, "day")
   if (hoursElapsed >= 1)
     return formatTimeElapsed(hoursElapsed, "hour");
   if (minutesElapsed >= 1)
@@ -25,10 +25,10 @@ export default (timePostedUnix) => {
   return "0 minutes ago";
 };
 
-function formatTimeElapsed(time, increment) {
+function formatTimeElapsed(time: number, increment: string): string {
   let flooredTime = String(Math.floor(time));
   let formattedIncrement =
-    flooredTime === 1 ? ` ${increment} ago` : ` ${increment}s ago`;
+    flooredTime === "1" ? ` ${increment} ago` : ` ${increment}s ago`;
 
   return flooredTime + formattedIncrement;
 }

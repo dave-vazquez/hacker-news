@@ -1,23 +1,28 @@
 import "./user-profile.scss";
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, RouteComponentProps } from "react-router-dom";
 import formatElapsedTime from "../../utils/formatElapsedTime";
 import ContentLoader from "../ContentLoader/ContentLoader";
 import useFetchUserProfile from "./hooks/useFetchProfile";
 
-const UserProfile = ({ match }) => {
+type RouteParams = {
+  username: string;
+};
+
+type PropTypes = RouteComponentProps<RouteParams>;
+
+const UserProfile: React.FC<PropTypes> = ({ match }) => {
   const {
-    params: { username },
-    path
+    params: { username }
   } = match;
 
   const [profile, fetching, error] = useFetchUserProfile(username);
 
   if (error) {
     return (
-      <main>
-        <center>Error Loading Data. Try again later.</center>
+      <main id="profile-error">
+        <p>Error Loading Data. Try again later.</p>
       </main>
     );
   }

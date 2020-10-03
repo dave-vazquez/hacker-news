@@ -1,4 +1,4 @@
-export default (url) => {
+export default (url: string): string => {
   let hostname = "";
 
   if (url) {

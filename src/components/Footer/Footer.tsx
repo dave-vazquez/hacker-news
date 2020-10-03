@@ -3,7 +3,7 @@ import "./footer.scss";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <footer>
       <p>Applications are open for YC Winter 2021</p>

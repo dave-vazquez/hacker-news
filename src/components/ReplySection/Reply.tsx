@@ -7,7 +7,11 @@ import upvote from "../../assets/upvote.png";
 import formatElapsedTime from "../../utils/formatElapsedTime";
 import DirectReplyList from "./DirectReplyList";
 
-const Reply = ({ reply }) => {
+type PropTypes = {
+  reply: any;
+};
+
+const Reply: React.FC<PropTypes> = ({ reply }) => {
   const [hidden, setHidden] = useState(false);
 
   const toggleHidden = () => setHidden((hidden) => !hidden);
@@ -30,11 +34,7 @@ const Reply = ({ reply }) => {
         <div id="comment-body">{parse(`${reply.text}`)}</div>
       </div>
       {reply.kids && (
-        <DirectReplyList
-          hidden={hidden}
-          replyIds={reply.kids}
-          thing={reply.kids.length === 4 ? true : false}
-        />
+        <DirectReplyList hidden={hidden} replyIds={reply.kids} />
       )}
     </article>
   );

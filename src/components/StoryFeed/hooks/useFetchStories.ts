@@ -1,21 +1,23 @@
-import { useLayoutEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import axios from "../../../utils/axios-instance";
 import storyReducer, {
-  ERROR,
-  FETCHING,
   RESULTS_PER_PAGE,
-  SUCCESS,
   initialState
 } from "./storyReducer";
 
-const useFetchStories = (storyType, pageNum) => {
+type StoryTuple = [Array<any>, boolean, boolean];
+
+const useFetchStories = (
+  storyType: string,
+  pageNum: number
+): StoryTuple => {
   const [{ stories, fetching, error }, dispatch] = useReducer(
     storyReducer,
     initialState
   );
 
-  useLayoutEffect(() => {
-    dispatch({ type: FETCHING });
+  useEffect(() => {
+    dispatch({ type: "fetching" });
 
     axios
       .get(`/${storyType}stories.json`)
@@ -23,34 +25,34 @@ const useFetchStories = (storyType, pageNum) => {
         return fetchStories(storyIds, pageNum);
       })
       .then((storyData) => {
-        dispatch({ type: SUCCESS, storyData });
+        dispatch({ type: "success", storyData });
       })
       .catch(() => {
-        dispatch({ type: ERROR });
+        dispatch({ type: "error" });
       });
   }, [storyType, pageNum]);
 
   return [stories, fetching, error];
 };
 
-function fetchStories(storyIds, pageNum) {
+function fetchStories(storyIds: Array<number>, pageNum: number) {
   storyIds = slicePage(pageNum, storyIds);
 
   return Promise.all(
-    storyIds.map((storyId) => {
-      return axios
-        .get(`item/${storyId}.json`)
-        .then(({ data }) => {
-          return data !== null ? data : { error: true };
-        })
-        .catch(() => {
-          return { error: true };
-        });
+    storyIds.map(async (storyId: number) => {
+      try {
+        const { data } = await axios.get(`item/${storyId}.json`);
+
+        if (!data) return { error: true };
+        return data;
+      } catch (_) {
+        return { error: true };
+      }
     })
   );
 }
 
-function slicePage(pageNum, storyIds) {
+function slicePage(pageNum: number, storyIds: Array<number>) {
   let startIndex = pageNum * RESULTS_PER_PAGE;
   let endIndex = startIndex + RESULTS_PER_PAGE;
 

@@ -6,8 +6,13 @@ import upvote from "../../assets/upvote.png";
 import formatElapsedTime from "../../utils/formatElapsedTime";
 import parseHostName from "../../utils/parseHostName";
 
-const Story = ({ story }) => {
-  //
+type PropTypes = {
+  story: any;
+};
+
+const Story: React.FC<PropTypes> = (props) => {
+  const story = props.story;
+
   if (story.error)
     return (
       <section id="story-error">

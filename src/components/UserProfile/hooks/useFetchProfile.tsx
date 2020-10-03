@@ -1,28 +1,27 @@
 import { useEffect, useReducer } from "react";
 import axios from "../../../utils/axios-instance";
 import userProfileReducer, {
-  ERROR,
-  FETCHING,
-  SUCCESS,
   initialState
 } from "./userProfileReducer";
 
-const useFetchUserProfile = (username) => {
+type ProfileTuple = [any, boolean, boolean];
+
+const useFetchUserProfile = (username: string): ProfileTuple => {
   const [{ profile, fetching, error }, dispatch] = useReducer(
     userProfileReducer,
     initialState
   );
 
   useEffect(() => {
-    dispatch({ type: FETCHING });
+    dispatch({ type: "fetching" });
 
     axios
       .get(`/user/${username}.json`)
       .then(({ data }) => {
-        dispatch({ type: SUCCESS, profile: data });
+        dispatch({ type: "success", profile: data });
       })
       .catch(() => {
-        dispatch({ type: ERROR });
+        dispatch({ type: "error" });
       });
   }, [username]);
 

@@ -1,13 +1,14 @@
 import { useEffect, useReducer } from "react";
 import axios from "../../../utils/axios-instance";
 import directRepliesReducer, {
-  ERROR,
-  FETCHING,
-  SUCCESS,
   initialState
 } from "./directRepliesReducer";
 
-const useFetchDirectReplies = (replyIds) => {
+type DirectRepliesTuple = [Array<any>, boolean, boolean];
+
+const useFetchDirectReplies = (
+  replyIds: Array<number>
+): DirectRepliesTuple => {
   const [{ directReplies, fetching, error }, dispatch] = useReducer(
     directRepliesReducer,
     initialState
@@ -15,29 +16,31 @@ const useFetchDirectReplies = (replyIds) => {
 
   useEffect(() => {
     dispatch({
-      type: FETCHING,
+      type: "fetching",
       directReplies: Array(replyIds.length).fill(null)
     });
 
     fetchDirectReplies(replyIds)
       .then((directReplies) => {
-        dispatch({ type: SUCCESS, directReplies });
+        dispatch({ type: "success", directReplies });
       })
       .catch(() => {
-        dispatch({ type: ERROR });
+        dispatch({ type: "error" });
       });
   }, [replyIds]);
 
   return [directReplies, fetching, error];
 };
 
-async function fetchDirectReplies(replyIds) {
+async function fetchDirectReplies(replyIds: Array<number>) {
   const directReplies = await Promise.all(
-    replyIds.map((replyId) => {
-      return axios
-        .get(`item/${replyId}.json`)
-        .then(({ data }) => (data.deleted ? null : data))
-        .catch(() => null);
+    replyIds.map(async (replyId) => {
+      try {
+        const { data } = await axios.get(`item/${replyId}.json`);
+        return data?.deleted ? null : data;
+      } catch (e) {
+        return null;
+      }
     })
   );
 

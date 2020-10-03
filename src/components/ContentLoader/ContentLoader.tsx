@@ -4,7 +4,11 @@ import React from "react";
 import { ReactComponent as ReplySkeletonLoader } from "../../assets/reply-skeleton-loader.svg";
 import { ReactComponent as StorySkeletonLoader } from "../../assets/story-skeleton-loader.svg";
 
-const ContentLoader = ({ type }) => {
+type PropTypes = {
+  type: string;
+};
+
+const ContentLoader: React.FC<PropTypes> = ({ type }) => {
   return (
     <div id="svg-container">
       {type === "story" ? (

@@ -9,9 +9,9 @@ import {
   ReplySection,
   StoryFeed,
   UserProfile
-} from "./components";
+} from "./components/index";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <div className="app">
       <Header />

@@ -122,21 +122,21 @@ To optimize the fetching of story data we have two options to consider:
 
 1. `Promise.all`:
 
-   ```
-    function fetchStories(storyIds) {
-      return Promise.all(
-        storyIds.map((storyId) => {
-          return axios
-            .get(`item/${storyId}.json`)
-            .then(({ data }) => {
-              return data !== null ? data : { error: true };
-            })
-            .catch(() => {
-              return { error: true };
-            });
-        })
-      );
-    }
+   ```tsx
+   function fetchStories(storyIds: Array<number>, pageNum: number) {
+     return Promise.all(
+       storyIds.map(async (storyId: number) => {
+         try {
+           const { data } = await axios.get(`item/${storyId}.json`);
+
+           if (!data) return { error: true };
+           return data;
+         } catch (_) {
+           return { error: true };
+         }
+       })
+     );
+   }
    ```
 
    The idea here is that `Promise.all` receives the array of story ids to be mapped into an array of promises, and in turn data for each story.
