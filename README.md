@@ -23,7 +23,7 @@ Here's the response we get:
 
 [https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty](https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty)
 
-```
+```json
 [
     24615916,
     24616649,
@@ -46,7 +46,7 @@ Let's make a fetch for to top story in the list above:
 
 [`https://hacker-news.firebaseio.com/v0/item/24615916.json?print=pretty`](https://hacker-news.firebaseio.com/v0//item/24615916.json?print=pretty)
 
-```
+```json
 story
 
 {
@@ -76,7 +76,7 @@ Let's fetch one comment:
 
 [`https://hacker-news.firebaseio.com/v0/item/24615916.json?print=pretty`](https://hacker-news.firebaseio.com/v0//item/24615916.json?print=pretty)
 
-```
+```json
 comment
 
 {
@@ -151,11 +151,11 @@ To optimize the fetching of story data we have two options to consider:
 
    You can view the implementation of this here:
 
-   `useFetchStories` - [src/components/StoryFeed/hooks/useFetchStories.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/StoryFeed/hooks/useFetchStories.js)
+   `useFetchStories` - [src/components/StoryFeed/hooks/useFetchStories.ts](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/StoryFeed/hooks/useFetchStories.ts)
 
-   `StoryFeed` - [src/components/StoryFeed/StoryFeed.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/StoryFeed/StoryFeed.js)
+   `StoryFeed` - [src/components/StoryFeed/StoryFeed.tsx](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/StoryFeed/StoryFeed.tsx)
 
-   `Story` - [src/components/StoryFeed/Story.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/StoryFeed/Story.js)
+   `Story` - [src/components/StoryFeed/Story.tsx](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/StoryFeed/Story.tsx)
 
    ***
 
@@ -281,13 +281,13 @@ This provides the reader with something to read/interact with in the meantime. S
 
 You can view this component tree here:
 
-`ReplySection` - [src/components/ReplySection/ReplySection.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/ReplySection.js)
+`ReplySection` - [src/components/ReplySection/ReplySection.tsx](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/ReplySection.tsx)
 
-`DirectReplies` - [src/components/ReplySection/DirectReplyList.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/DirectReplyList.js)
+`DirectReplies` - [src/components/ReplySection/DirectReplyList.tsx](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/DirectReplyList.tsx)
 
-`useFetchDirectReplies` - [src/components/ReplySection/hooks/useFetchDirectReplies.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/hooks/useFetchDirectReplies.js)
+`useFetchDirectReplies` - [src/components/ReplySection/hooks/useFetchDirectReplies.ts](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/hooks/useFetchDirectReplies.ts)
 
-`Reply` - [src/components/ReplySection/Reply.js](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/Reply.js)
+`Reply` - [src/components/ReplySection/Reply.tsx](https://github.com/dave-vazquez/hacker-news/blob/master/src/components/ReplySection/Reply.tsx)
 
 ## Further Considerations
 
