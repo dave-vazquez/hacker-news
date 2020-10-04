@@ -140,9 +140,7 @@ To optimize the fetching of story data we have two options to consider:
    }
    ```
 
-   The idea here is that `Promise.all` receives the array of story ids to be mapped into an array of promises, and in turn data for each story.
-
-   On each iteration of `storyIds.map` we make an async request on the story id, for which the immediate return value is a promise. `Promise.all` will then wait for all promises in the array to resolve before returning a final, resulting array of story data.
+   The idea here is that `Promise.all` receives the array of story ids to be mapped into an array data for each story.
 
    Since `storyIds.map` iterates synchronously over each story id, the result is a quick, burst of requests, all resolving at nearly the same time where otherwise the visitor would be waiting for one request to finish before the next could start. The resulting effect is a brief interval between fetching of data and the rendering of content to the page.
 
