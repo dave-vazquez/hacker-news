@@ -23,7 +23,7 @@ Here's the response we get:
 
 [https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty](https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty)
 
-```json
+```js
 [
   24615916,
   24616649,
@@ -35,7 +35,7 @@ Here's the response we get:
   24604746,
   24617318
   // ... 490 more items
-]
+];
 ```
 
 Not off to a good start.
@@ -51,18 +51,15 @@ story
 
 {
     "by": "todsacerdoti",
-  // ...,
---> "kids": [
+    "kids": [
         24560456,
         24561900,
         24562039,
         24560484,
-        24560317,
-        // ...
+        24560317
     ],
     "title": "Zig's New Relationship with LLVM",
     "url": "https://kristoff.it/blog/zig-new-relationship-llvm/",
-  // ...,
 ]
 ```
 
@@ -81,16 +78,13 @@ comment
 
 {
     "by": "IgorPartola",
-  // ...,
---> "kids": [
+    "kids": [
         24560588,
         24560601,
         24575117,
         24560586
     ],
- // ...,
     "text": "Role clarity is a huge one in my book.",
- // ...
 }
 ```
 
@@ -124,7 +118,7 @@ To optimize the fetching of story data we have two options to consider:
 
    ```tsx
    function fetchStories(storyIds: Array<number>, pageNum: number) {
-     // removes subsection of array at index determined by page number
+     // removes subsection of array determined by page number
      storyIds = slicePage(pageNum, storyIds);
 
      return Promise.all(
