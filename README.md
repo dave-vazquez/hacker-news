@@ -60,7 +60,7 @@ story
     ],
     "title": "Zig's New Relationship with LLVM",
     "url": "https://kristoff.it/blog/zig-new-relationship-llvm/",
-]
+}
 ```
 
 It's a pretty straight-forward JSON object. I've left out some of the fields to save space, but notice the field `kids` (think "children"). If you were wondering how we might get the comments for each story, you have your answer: Another array of ids.
