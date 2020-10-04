@@ -42,9 +42,7 @@ function fetchStories(storyIds: Array<number>, pageNum: number) {
     storyIds.map(async (storyId: number) => {
       try {
         const { data } = await axios.get(`item/${storyId}.json`);
-
-        if (!data) return { error: true };
-        return data;
+        return data ? data : { error: true };
       } catch (_) {
         return { error: true };
       }

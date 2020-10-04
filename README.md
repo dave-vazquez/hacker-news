@@ -124,13 +124,14 @@ To optimize the fetching of story data we have two options to consider:
 
    ```tsx
    function fetchStories(storyIds: Array<number>, pageNum: number) {
+     // removes subsection of array at index determined by page number
+     storyIds = slicePage(pageNum, storyIds);
+
      return Promise.all(
        storyIds.map(async (storyId: number) => {
          try {
            const { data } = await axios.get(`item/${storyId}.json`);
-
-           if (!data) return { error: true };
-           return data;
+           return data ? data : { error: true };
          } catch (_) {
            return { error: true };
          }
