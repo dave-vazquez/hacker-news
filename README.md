@@ -1,6 +1,6 @@
 ## Hacker News Clone
 
-Deployment: https://semantic-hacker-news.herokuapp.com/
+Deployment: https://hacker-news-dv.herokuapp.com
 
 ---
 
